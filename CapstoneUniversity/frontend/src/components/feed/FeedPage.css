@@ -1,0 +1,35 @@
+.main_container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main_title {
+    margin-bottom: 50px;
+}
+
+.main_title h1 {
+    font-size: 48px;
+}
+
+.news-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.picture-one {
+    flex: 1;
+}
+
+.picture-two {
+    flex: 1;
+}
+
+.picture-three {
+    flex: 1;
+}
+
+.feedpic {
+    width: 25vw;
+    height: 25vh;
+}

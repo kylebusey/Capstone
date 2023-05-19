@@ -76,6 +76,7 @@ class DisplayUserInformation(APIView):
 
     def get(self, request, format=None):
         user = UserSerializer(request.user)
+        print(user.data)
         return Response(user.data)
     
     

@@ -1,0 +1,70 @@
+.hero_text {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    font-family: var(--font-family);
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.home_buttons {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button {
+    width: 200px;
+    height: 75px;
+    margin: 0.5rem;
+    font-family: var(--font-family);
+    background-color: rgb(74,153,230);
+    filter: brightness(60%);
+    font-size: 18px;
+    transition: all 0.5s;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.button span {
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+.hero_pic {
+    background-image: url("../assets/college.jpeg");
+    position: relative;
+    background-position: center;
+    filter: brightness(60%);
+    z-index: -1;
+}
+
+.hero_pic img {
+    height: 75vh;  
+    width: 100%; 
+}
