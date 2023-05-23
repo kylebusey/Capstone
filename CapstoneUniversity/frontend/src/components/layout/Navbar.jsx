@@ -2,8 +2,13 @@ import React from 'react';
 import logo from '../../assets/CapLogo.png';
 import { Link } from 'react-router-dom';
 import "./navbar.css";
+import { useAuth } from '../../services/UserContext';
+import { ConditionalButton } from './Buttons';
+
 
 export default function Navbar() {
+
+    const auth = useAuth();
 
 return (
     <div className="navbar">
@@ -22,9 +27,9 @@ return (
         </div>
         <div className="right_side_menu">
             <div className="navbar_links_right">
-             <div className="item">{<Link style={{textDecoration: 'none'}} to="/login"><p>Log In</p></Link> } </div>
-             <div className="item"> <Link style={{textDecoration: 'none'}} to="/register"><p>Get Started</p></Link></div>
-            </div>
+            <div className="item"> <ConditionalButton /></div>
+            <div className="item"> <Link style={{textDecoration: 'none'}} to="/register"><p>Get Started</p></Link></div>
+             </div>
         </div>
 
         </div>

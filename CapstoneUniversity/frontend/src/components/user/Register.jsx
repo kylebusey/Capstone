@@ -3,9 +3,9 @@ import Form from 'react-bootstrap/Form';
 import './form.css';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { register } from "../../services/axiosApi";
 import capstoneLogo from '../../assets/CapLogo.png';
 import CSRFToken from "../../services/CSRFToken";
+import { useAuth } from "../../services/UserContext";
 
 
 const required = value => {
@@ -52,6 +52,7 @@ export default function Register() {
 
   const navigate = useNavigate();
   const path = "/students/feed";
+  const auth = useAuth();
 
   const [username, setUsername] = useState();
   const [firstName, setFirstName] = useState();
@@ -73,7 +74,7 @@ export default function Register() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    register(username, firstName, lastName, password).then(() => {
+      auth.register(username, firstName, lastName, password).then(() => {
      navigate(path, {replace: true})
       });
   }

@@ -3,8 +3,9 @@ import Form from 'react-bootstrap/Form';
 import './form.css';
 import { useNavigate, useLocation } from "react-router-dom";
 import capstoneLogo from '../../assets/CapLogo.png';
-import {login} from "../../services/axiosApi";
 import CSRFToken from "../../services/CSRFToken";
+import { useAuth } from "../../services/UserContext";
+
 
 const required = value => {
   if (!value) {
@@ -31,6 +32,7 @@ export default function LoginForm() {
   
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
+   const auth = useAuth();
    
    const navigate = useNavigate();
    const location = useLocation();
@@ -39,7 +41,7 @@ export default function LoginForm() {
     
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-      login(username, password).then((response) => {
+      auth.login(username, password).then((response) => {
       navigate(from, {replace: true})
       })
   };
