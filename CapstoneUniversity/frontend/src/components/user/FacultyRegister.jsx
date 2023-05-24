@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import './form.css';
 import { useNavigate } from "react-router-dom";
 import capstoneLogo from '../../assets/CapLogo.png';
+import { useAuth } from "../../services/UserContext";
 
 
 const required = value => {
@@ -48,13 +49,13 @@ const firstNameValidation = value => {
 
 export default function FacultyRegister() {
   const navigate = useNavigate();
-  const path = "faculty/feed/";
+  const auth = useAuth();
+  const path = "/home";
 
   const [email, setEmail] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [password, setPassword] = useState();
-  const [staffID, setStaffID] = useState();
 
   const onChangeEmail = e => {
     setEmail(e.target.value);
@@ -68,17 +69,14 @@ export default function FacultyRegister() {
   const onChangePassword = e => {
     setPassword(e.target.value);
   };
-  const onChangeStaffID = e => {
-    setStaffID(e.target.value);
-  };
+
 
   
   const handleFacultyRegister = (e) => {
     e.preventDefault();
-    //auth.facultyRegister(email, firstName, lastName, password, staffID).then(() =>
-    // {
-     // navigate(path, {replace: true})
-   // });
+      auth.facultyRegister(email, firstName, lastName, password).then(() => {
+          navigate(path);
+      });
   } 
 
     return (
@@ -115,13 +113,6 @@ export default function FacultyRegister() {
         value={lastName}
         onChange={onChangeLastName}
         validations={[required, lastNameValidation]} />
-      </div>
-      <div class="input-container ic2">
-        <label for="staff_id" class="placeholder"><p>Staff ID</p></label>
-        <input class="input" type="staff_id" placeholder=" " name="staff_id" 
-        value={staffID}
-        onChange={onChangeStaffID}
-        validations={[required]}/>
       </div>
       <button type="text" class="submit">Submit</button>
       </Form>

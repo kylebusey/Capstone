@@ -2,20 +2,18 @@ import React from 'react';
 import logo from '../../assets/CapLogo.png';
 import { Link } from 'react-router-dom';
 import "./navbar.css";
-import { useAuth } from '../../services/UserContext';
 import { ConditionalButton } from './Buttons';
+import { useAuth } from '../../services/UserContext';
 
 
 export default function Navbar() {
-
-    const auth = useAuth();
 
 return (
     <div className="navbar">
         <div className="left_side_menu">
             <Link to="/home"></Link>
             <div className="navbar_logo"> 
-                <Link  to="/home">
+                <Link to="/home">
                     <img src={logo} alt="college logo" />                     
                 </Link>
             </div>

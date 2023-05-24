@@ -16,7 +16,6 @@ export default function HomePage() {
         <div className="hero_text">
             <h1>Capstone University: Established in 2022</h1>
             <h2>Imagine the Unimaginable</h2>
-            {auth.user ? <h2>Welcome {auth.user.first_name}</h2>: <h2>Welcome!!</h2>}
         </div>
 
         <div className="home_buttons">

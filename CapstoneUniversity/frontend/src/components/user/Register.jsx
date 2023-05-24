@@ -2,7 +2,7 @@ import React from "react";
 import Form from 'react-bootstrap/Form';
 import './form.css';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import capstoneLogo from '../../assets/CapLogo.png';
 import CSRFToken from "../../services/CSRFToken";
 import { useAuth } from "../../services/UserContext";
@@ -72,6 +72,7 @@ export default function Register() {
     setPassword(e.target.value);
   };
 
+
   const handleRegister = (e) => {
     e.preventDefault();
       auth.register(username, firstName, lastName, password).then(() => {
@@ -117,6 +118,7 @@ export default function Register() {
             validations={[required, passwordReq]}/>
           </div>
           <button type="text" class="submit">Submit</button>
+          <div className="subtitle"><h2>Not a Student? Click <Link to='/faculty/register'>here</Link> for Faculty Registration</h2></div>
       </Form>
     </div>
     );

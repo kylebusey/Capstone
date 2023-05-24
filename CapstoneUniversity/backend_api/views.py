@@ -1,7 +1,7 @@
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from .models import User
 from .serializers import UserSerializer, UserLoginSerializer, UserRegisterSerializer, FacultyRegisterSerializer
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
@@ -44,14 +44,22 @@ class LoginView(APIView):
         data = request.data
         serializer = UserLoginSerializer(data=data)
 
-
         if serializer.is_valid():
             user = serializer.check_user(data)
             if user is not None:
                 login(request, user)
                 return Response(serializer.data, status=status.HTTP_200_OK) 
         return Response(status=status.HTTP_400_BAD_REQUEST)
-        
+
+@method_decorator(csrf_protect, name='dispatch')  
+class LogoutView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    
+    @staticmethod
+    def post(request, format=None):
+        logout(request)
+        return Response(status=status.HTTP_200_OK)
+                
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class GetCSRFToken(APIView):

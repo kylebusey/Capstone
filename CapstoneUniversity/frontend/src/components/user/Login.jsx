@@ -1,7 +1,7 @@
 import {React, useState } from "react"
 import Form from 'react-bootstrap/Form';
 import './form.css';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import capstoneLogo from '../../assets/CapLogo.png';
 import CSRFToken from "../../services/CSRFToken";
 import { useAuth } from "../../services/UserContext";
@@ -60,7 +60,7 @@ export default function LoginForm() {
         <CSRFToken />
           <div class="logo"><img src ={capstoneLogo}/></div>
           <div className="title"><h1>Sign In</h1></div>
-          <div className="subtitle"><h2>Not Registered? Click here.</h2></div>
+          <div className="subtitle"><h2>Not Registered? Click <Link to='/register/'>here</Link></h2></div>
           <div className="input-container">
           <label for="username" class="placeholder"><p>Username</p></label>
           <input className="input" type="text" placeholder="" name="username"
