@@ -1,5 +1,4 @@
 import React, {createContext, useState, useContext} from 'react'
-import { useEffect } from 'react';
 import axiosInstance from './axiosApi';
 import Cookies from 'js-cookie';
 
@@ -21,13 +20,28 @@ const UserProvider = ({ children }) => {
 
 const useProvideAuth = () => {
 
-    useEffect(() => {
-        getUserData()
-      }, []);
+    const [user, setUser] = useState();
+    const [loading, setLoading] = useState(false);
 
-    const [user, setUser] = useState(null)
-    const [isFaculty, setIsFaculty] = useState(false)
+ 
+    const getUserData = async () => {
+            
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+                withCredentials: true,
+            }
+        };
+   
 
+      return await axiosInstance.get("userinfo/", config).then((response) => {
+        setUser(response.data);
+      });
+    }
+
+    
     const register = async (username, first_name, last_name, password) => {
     
         const config = {
@@ -40,7 +54,9 @@ const useProvideAuth = () => {
     
         const body = JSON.stringify({username, first_name, last_name, password});
     
-        return await axiosInstance.post("register/", body, config).then(getUserData());
+        return await axiosInstance.post("register/", body, config).then((response) => {
+            setUser(response.data);
+        })
     }
 
 
@@ -55,12 +71,17 @@ const useProvideAuth = () => {
         };
     
         const body = JSON.stringify({username, first_name, last_name, password});
+
+        setLoading(true);
     
-        return await axiosInstance.post("faculty/register/", body, config).then(getUserData());
+        return await axiosInstance.post("faculty/register/", body, config).then((response) => {
+            setUser(response.data);
+            setLoading(false);
+        });
     }
     
     const login = async (username, password) => {
-    
+
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -70,10 +91,12 @@ const useProvideAuth = () => {
         };
     
         const body = JSON.stringify({username, password});
+
+        setLoading(true);
     
         return await axiosInstance.post("login/", body, config).then((response) => {
             setUser(response.data);
-            setIsFaculty(response.data.is_staff);
+            setLoading(false);
         });
       }
 
@@ -89,34 +112,17 @@ const useProvideAuth = () => {
 
         return await axiosInstance.post("logout/", config).then(
             setUser(null));
-            setIsFaculty(false);
       }
     
-    const getUserData = async () => {
-            
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken'),
-                withCredentials: true,
-            }
-        };
     
-        return axiosInstance.get("userinfo/", config).then((response) => {
-            setUser(response.data);
-            setIsFaculty(response.data.is_staff);
-        });  
-    }
-
     return {
         user,
-        isFaculty,
+        loading,
+        getUserData,
         register,
         facultyRegister,
         login,
         logout,
-        getUserData
     }
 
 }
