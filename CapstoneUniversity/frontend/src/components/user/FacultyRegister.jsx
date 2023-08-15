@@ -52,13 +52,13 @@ export default function FacultyRegister() {
   const auth = useAuth();
   const path = "/home";
 
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [password, setPassword] = useState();
 
-  const onChangeEmail = e => {
-    setEmail(e.target.value);
+  const onChangeUsername = e => {
+    setUsername(e.target.value);
   };
   const onChangeFirstName = e => {
     setFirstName(e.target.value);
@@ -74,7 +74,7 @@ export default function FacultyRegister() {
   
   const handleFacultyRegister = (e) => {
     e.preventDefault();
-      auth.facultyRegister(email, firstName, lastName, password).then(() => {
+      auth.facultyRegister(username, firstName, lastName, password).then(() => {
           navigate(path);
       });
   } 
@@ -87,10 +87,10 @@ export default function FacultyRegister() {
       <div class ="subtitle"><h2>The next step for joining Capstone University!</h2></div>
       </div>
       <div class="input-container">
-        <label for="email" class="placeholder"><p>Email</p></label>
-        <input class="input" type="text" placeholder=" " name="email"
-        value={email} 
-        onChange= {onChangeEmail} 
+        <label for="username" class="placeholder"><p>Username</p></label>
+        <input class="input" type="text" placeholder=" " name="username"
+        value={username} 
+        onChange= {onChangeUsername} 
         validations={[required]}  />
       </div>
       <div class="input-container">

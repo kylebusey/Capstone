@@ -9,7 +9,8 @@ import Register from './components/user/Register';
 import FacultyRegister from './components/user/FacultyRegister';
 import StudentFeed from './components/feed/StudentFeed';
 import FacultyFeed from './components/feed/FacultyFeed';
-import UserProvider from './services/UserContext';
+import UserProvider, { useAuth } from './services/UserContext';
+import { FacultyRoute, ProtectedRoute } from './services/ProtectedRoute';
 
 
 function App() {
@@ -23,8 +24,12 @@ function App() {
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/register" element={<Register />} />
       <Route exact path="/faculty/register" element={<FacultyRegister />} />
+      <Route element={<ProtectedRoute />}>
       <Route exact path="/students/feed" element={<StudentFeed /> }/>
+      </Route>
+      <Route element={<FacultyRoute />}>
       <Route exact path="/faculty/feed" element={<FacultyFeed />}/>
+      </Route>
         </Route>
       </Routes>
    </Container>
