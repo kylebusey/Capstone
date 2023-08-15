@@ -1,4 +1,4 @@
-import React, {createContext, useState, useContext} from 'react'
+import React, {createContext, useState, useContext, useEffect} from 'react'
 import axiosInstance from './axiosApi';
 import Cookies from 'js-cookie';
 
@@ -20,10 +20,14 @@ const UserProvider = ({ children }) => {
 
 const useProvideAuth = () => {
 
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
 
- 
+
+    useEffect(() => {
+        getUserData();
+    }, []);
+
     const getUserData = async () => {
             
         const config = {
@@ -40,7 +44,6 @@ const useProvideAuth = () => {
         setUser(response.data);
       });
     }
-
     
     const register = async (username, first_name, last_name, password) => {
     
@@ -59,7 +62,6 @@ const useProvideAuth = () => {
         })
     }
 
-
     const facultyRegister = async (username, first_name, last_name, password) => {
     
         const config = {
@@ -72,7 +74,6 @@ const useProvideAuth = () => {
     
         const body = JSON.stringify({username, first_name, last_name, password});
 
-        setLoading(true);
     
         return await axiosInstance.post("faculty/register/", body, config).then((response) => {
             setUser(response.data);
@@ -92,11 +93,12 @@ const useProvideAuth = () => {
     
         const body = JSON.stringify({username, password});
 
-        setLoading(true);
-    
         return await axiosInstance.post("login/", body, config).then((response) => {
-            setUser(response.data);
-            setLoading(false);
+            if(response.data.username) {
+                getUserData();
+            } else {
+                console.log("Could not find stored username.");
+            }
         });
       }
 

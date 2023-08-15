@@ -21,4 +21,15 @@ export function LogoutButton(props) {
    return (<Button onClick={props.logout}>Logout</Button>);
 }
 
+export function ConditionalText() {
+    const auth = useAuth();
+
+    if(auth.user) {
+         return (auth?.user.is_staff ? <p>Staff User</p>: <p>Non-staff user</p>);
+    } else {
+        return (<p>No user</p>);
+    }
+    
+}
+
 
