@@ -76,7 +76,7 @@ export default function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
       auth.register(username, firstName, lastName, password).then(() => {
-     navigate(path, {replace: true})
+        navigate(path, {replace: true})
       });
   }
   

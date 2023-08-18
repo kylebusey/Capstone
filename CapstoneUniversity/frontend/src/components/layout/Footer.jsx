@@ -10,9 +10,9 @@ export default function Footer() {
     return (
       <div className ="footer">
         <div className="footer-links">
-        <Link className="item" style={{textDecoration: 'none'}} to="/about"><p>About Us</p></Link>
-        <Link className="item" style={{textDecoration: 'none'}} to="/home"><p>Privacy Notice</p></Link>
-        <Link className="item" style={{textDecoration: 'none'}} to="/home"><p>Terms of Use</p></Link>
+        <Link className="item" style={{textDecoration: 'none'}} ><p>About Us</p></Link>
+        <Link className="item" style={{textDecoration: 'none'}} ><p>Privacy Notice</p></Link>
+        <Link className="item" style={{textDecoration: 'none'}} ><p>Terms of Use</p></Link>
         </div>
 
         <div className="footer_text">

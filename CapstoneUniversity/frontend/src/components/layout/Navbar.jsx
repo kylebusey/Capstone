@@ -2,12 +2,12 @@ import React from 'react';
 import logo from '../../assets/CapLogo.png';
 import { Link } from 'react-router-dom';
 import "./navbar.css";
-import { ConditionalButton, ConditionalText } from './Buttons';
+import {LoginButton, LogoutButton, RegisterButton} from "./Buttons";
 import { useAuth } from '../../services/UserContext';
-
 
 export default function Navbar() {
 
+    const auth = useAuth();
 
 return (
     <div className="navbar">
@@ -22,13 +22,13 @@ return (
              <div className="item"> <Link style={{textDecoration: 'none'}} to="/students/feed"><p>Current Students</p></Link></div>
              <div className="item"> <Link style={{textDecoration: 'none'}} to="/faculty/feed"><p>Faculty</p></Link> </div>
              <div className="item"> <Link style={{textDecoration: 'none'}} to="/courses"><p>Course Catalog</p></Link></div>
-             <div className="item"><ConditionalText/></div>
             </div> 
         </div>
         <div className="right_side_menu">
             <div className="navbar_links_right">
-            <div className="item"> <ConditionalButton /></div>
-            <div className="item"> <Link style={{textDecoration: 'none'}} to="/register"><p>Get Started</p></Link></div>
+            {auth.user && auth.user.username ? 
+            [<div className='header_text'> <p>Welcome {auth.user.username}!</p> </div>, <LogoutButton logout={auth.logout}/>] :
+             [<div className='item'> <LoginButton/> </div>,  <div className='item'> <RegisterButton/> </div>]}
              </div>
         </div>
 

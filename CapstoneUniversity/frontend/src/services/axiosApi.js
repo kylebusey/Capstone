@@ -1,7 +1,5 @@
 import axios from 'axios'
 import Cookies from 'js-cookie';
-import { useAuth } from './UserContext';
-
 
 export const axiosInstance = axios.create({
     baseURL: '/api/',

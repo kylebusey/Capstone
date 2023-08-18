@@ -14,9 +14,15 @@ export const ProtectedRoute = () => {
 
 export const FacultyRoute = () => {
     let auth = useAuth();
-  return (
-      auth?.user.is_staff ? <Outlet/> : <Navigate to='/login'/>
-    )
+
+    if(auth.user) {
+      return (
+        auth?.user.is_staff ? <Outlet/> : <Navigate to='/unauthorized'/>
+      );
+    } else {
+      return (<Navigate to='/login'/>);
+    }
+ 
   }
 
 

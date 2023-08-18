@@ -21,8 +21,6 @@ const UserProvider = ({ children }) => {
 const useProvideAuth = () => {
 
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(false);
-
 
     useEffect(() => {
         getUserData();
@@ -57,9 +55,7 @@ const useProvideAuth = () => {
     
         const body = JSON.stringify({username, first_name, last_name, password});
     
-        return await axiosInstance.post("register/", body, config).then((response) => {
-            setUser(response.data);
-        })
+        return await axiosInstance.post("register/", body, config);
     }
 
     const facultyRegister = async (username, first_name, last_name, password) => {
@@ -75,10 +71,7 @@ const useProvideAuth = () => {
         const body = JSON.stringify({username, first_name, last_name, password});
 
     
-        return await axiosInstance.post("faculty/register/", body, config).then((response) => {
-            setUser(response.data);
-            setLoading(false);
-        });
+        return await axiosInstance.post("faculty/register/", body, config);
     }
     
     const login = async (username, password) => {
@@ -119,7 +112,6 @@ const useProvideAuth = () => {
     
     return {
         user,
-        loading,
         getUserData,
         register,
         facultyRegister,

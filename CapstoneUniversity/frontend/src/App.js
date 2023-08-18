@@ -11,6 +11,7 @@ import StudentFeed from './components/feed/StudentFeed';
 import FacultyFeed from './components/feed/FacultyFeed';
 import UserProvider, { useAuth } from './services/UserContext';
 import { FacultyRoute, ProtectedRoute } from './services/ProtectedRoute';
+import Unauthorized from './components/Unauthorized';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Routes>
       <Route path="/" element= { <Layout /> }>
       <Route exact path="/home" element={<HomePage />} />
+      <Route exact path="/unauthorized" element={<Unauthorized />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/register" element={<Register />} />
       <Route exact path="/faculty/register" element={<FacultyRegister />} />
