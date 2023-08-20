@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axiosInstance from "../services/axiosApi";
 
 const CSRFToken = () => {
+
     const [csrftoken, setcsrftoken] = useState('');
 
     const getCookie = (name) => {
@@ -20,18 +21,22 @@ const CSRFToken = () => {
     }
 
     useEffect(() => {
+        UpdateCSRF();
+    }, []);
+
+    const UpdateCSRF = () => {
         const fetchData = async () => {
             try {
                 await axiosInstance.get('auth/token/');
                 console.log("Token has been retrieved");
             } catch (err) {
-                console.log("Unable to retrieve token")
+                console.log("Unable to retrieve token", err);
             }
         };
         
         fetchData();
         setcsrftoken(getCookie('csrftoken'));
-    }, []);
+    }
 
     return (
         <input type='hidden' name='csrfmiddlewaretoken' value={csrftoken} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Container from "react-bootstrap/Container";
 import { Route, Routes} from 'react-router-dom';
@@ -9,12 +9,18 @@ import Register from './components/user/Register';
 import FacultyRegister from './components/user/FacultyRegister';
 import StudentFeed from './components/feed/StudentFeed';
 import FacultyFeed from './components/feed/FacultyFeed';
-import UserProvider, { useAuth } from './services/UserContext';
+import Unauthorized from './components/unauthorized';
+import UserProvider from './services/UserContext';
 import { FacultyRoute, ProtectedRoute } from './services/ProtectedRoute';
-import Unauthorized from './components/Unauthorized';
+import icon from './assets/favicon.ico';
 
 
 function App() {
+
+  useEffect(() => {
+      const favicon = document.getElementById('favicon');
+      favicon.setAttribute('href', icon);
+  }, []);
 
   return (
    <UserProvider>

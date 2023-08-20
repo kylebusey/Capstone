@@ -51,7 +51,6 @@ const firstNameReq = value => {
 export default function Register() {
 
   const navigate = useNavigate();
-  const path = "/students/feed";
   const auth = useAuth();
 
   const [username, setUsername] = useState();
@@ -76,7 +75,8 @@ export default function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
       auth.register(username, firstName, lastName, password).then(() => {
-        navigate(path, {replace: true})
+        navigate('/home', {replace: true})
+        window.location.reload()
       });
   }
   

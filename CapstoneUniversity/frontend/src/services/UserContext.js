@@ -1,7 +1,8 @@
 import React, {createContext, useState, useContext, useEffect} from 'react'
 import axiosInstance from './axiosApi';
 import Cookies from 'js-cookie';
-
+import CSRFToken from "./CSRFToken";
+import { Navigate } from 'react-router-dom';
 
 export const UserContext = createContext();
 
@@ -21,6 +22,7 @@ const UserProvider = ({ children }) => {
 const useProvideAuth = () => {
 
     const [user, setUser] = useState(null);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         getUserData();
@@ -44,64 +46,46 @@ const useProvideAuth = () => {
     }
     
     const register = async (username, first_name, last_name, password) => {
-    
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-    
+
         const body = JSON.stringify({username, first_name, last_name, password});
     
-        return await axiosInstance.post("register/", body, config);
+        return await axiosInstance.post("register/", body).catch((error) => {
+            alert(error);
+        });
     }
 
     const facultyRegister = async (username, first_name, last_name, password) => {
     
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-    
         const body = JSON.stringify({username, first_name, last_name, password});
 
-    
-        return await axiosInstance.post("faculty/register/", body, config);
+        return await axiosInstance.post("faculty/register/", body).catch((error) => {
+            alert(error);
+        });
     }
     
     const login = async (username, password) => {
 
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-    
         const body = JSON.stringify({username, password});
 
-        return await axiosInstance.post("login/", body, config).then((response) => {
+        return await axiosInstance.post("login/", body).then((response) => {
             if(response.data.username) {
                 getUserData();
-            } else {
-                console.log("Could not find stored username.");
-            }
-        });
-      }
+            } 
+        }).catch((error) => {
+            alert(error);
+        })
+    };
 
     const logout = async () => {
-    
+
+        <CSRFToken/>
+
         const config = {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
+                'X-CSRFToken': Cookies.get('csrftoken'),
+                withCredentials: true,
             }
         };
 
@@ -109,16 +93,15 @@ const useProvideAuth = () => {
             setUser(null));
       }
     
-    
     return {
         user,
+        error,
         getUserData,
         register,
         facultyRegister,
         login,
         logout,
     }
-
 }
 
 

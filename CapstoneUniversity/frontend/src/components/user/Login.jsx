@@ -42,7 +42,8 @@ export default function LoginForm() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
       auth.login(username, password).then(() => {
-          navigate(from, {replace: true})
+          navigate('/home')
+          window.location.reload()
       })
   };
 

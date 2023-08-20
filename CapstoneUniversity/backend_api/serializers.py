@@ -24,10 +24,10 @@ class UserLoginSerializer(serializers.Serializer):
 
 	def check_user(self, clean_data):
 		user = authenticate(username=clean_data['username'], password=clean_data['password'])    
-		if user.is_authenticated:
-			return user
-		else:
+		if user is None:
 			return None
+		else:
+			return user
     
 class FacultyRegisterSerializer(serializers.ModelSerializer):
 	class Meta:

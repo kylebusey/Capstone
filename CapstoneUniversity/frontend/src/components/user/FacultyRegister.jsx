@@ -75,7 +75,8 @@ export default function FacultyRegister() {
   const handleFacultyRegister = (e) => {
     e.preventDefault();
       auth.facultyRegister(username, firstName, lastName, password).then(() => {
-          navigate(path);
+          navigate('/home')
+          window.location.reload()
       });
   } 
 
@@ -94,13 +95,6 @@ export default function FacultyRegister() {
         validations={[required]}  />
       </div>
       <div class="input-container">
-        <label for="password" class="placeholder"><p>Password</p></label>
-        <input class="input" type="password" placeholder=" " name="password" 
-        value={password}
-        onChange={onChangePassword}
-        validations={[required, passwordValidation]}/>
-      </div>
-      <div class="input-container">
         <label for="firstname" class="placeholder"><p>First Name</p></label>
         <input class="input" type="text" placeholder=" " name="first_name"
         value={firstName}
@@ -113,6 +107,13 @@ export default function FacultyRegister() {
         value={lastName}
         onChange={onChangeLastName}
         validations={[required, lastNameValidation]} />
+      </div>
+      <div class="input-container">
+        <label for="password" class="placeholder"><p>Password</p></label>
+        <input class="input" type="password" placeholder=" " name="password" 
+        value={password}
+        onChange={onChangePassword}
+        validations={[required, passwordValidation]}/>
       </div>
       <button type="text" class="submit">Submit</button>
       </Form>

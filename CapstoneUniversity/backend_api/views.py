@@ -19,7 +19,7 @@ class UserCreateView(APIView):
             user = serializer.create(request.data)
             if user:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 @method_decorator(csrf_protect, name='dispatch')
 class FacultyCreateView(APIView):
@@ -32,7 +32,7 @@ class FacultyCreateView(APIView):
             user = serializer.create(request.data)
             if user:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
        
 
 @method_decorator(csrf_protect, name='dispatch')
@@ -49,7 +49,7 @@ class LoginView(APIView):
             if user is not None:
                 login(request, user)
                 return Response(serializer.data, status=status.HTTP_200_OK) 
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_protect, name='dispatch')  
 class LogoutView(APIView):

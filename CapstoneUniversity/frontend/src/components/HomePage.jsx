@@ -24,11 +24,11 @@ export default function HomePage() {
           <Button className="button" variant="primary" size="lg"><span>About Us</span></Button> 
         </Link>
 
-        <Link to="/students/register">
+        <Link to="/register">
           <Button className="button" variant="primary" size="lg"><span>Enroll Now</span></Button>
         </Link>
 
-        <Link to="/capstonesuccess">
+        <Link to="/home">
           <Button className="button" variant="primary" size="lg"><span>Success Stories</span></Button>
         </Link>
 
