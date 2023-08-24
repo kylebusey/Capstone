@@ -11,5 +11,9 @@ urlpatterns = [
     path('students/feed', index),
     path('faculty/register', index),
     path('faculty/feed', index),
+    path('unauthorized', index),
+    path('courses', index),
+    path('courses/create', index),
+    path('dashboard')
     
 ]

@@ -92,6 +92,16 @@ const useProvideAuth = () => {
         return await axiosInstance.post("logout/", config).then(
             setUser(null));
       }
+
+
+      const createCourse = async (name, building, time, start_date, end_date, available) => {
+
+        <CSRFToken/>
+
+        const body = JSON.stringify({name, building, time, start_date, end_date, available});
+
+        return await axiosInstance.post("courses/create", body);
+      }
     
     return {
         user,
@@ -101,6 +111,7 @@ const useProvideAuth = () => {
         facultyRegister,
         login,
         logout,
+        createCourse,
     }
 }
 

@@ -18,3 +18,21 @@ class User(AbstractUser):
     
     def get_user_type(self):
         return self.is_staff
+    
+
+class Course(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=50, default='Course Name')
+    professor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='instructor', null=True)
+    building = models.CharField(max_length=50)
+    time = models.CharField(max_length=10)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    students = models.ManyToManyField(User, blank=True, related_name='registered')
+    available = models.IntegerField(default=30)
+
+
+
+
+    
+

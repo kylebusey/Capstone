@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
+from .models import Course
 
 
 UserModel = get_user_model()
@@ -48,3 +49,22 @@ class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserModel
 		fields = ('username', 'first_name', 'last_name', 'is_staff')
+
+
+class CourseSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Course
+		fields = '__all__'
+
+class CreateCourseSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Course
+		fields = ('name', 'building', 'time', 'start_date', 'end_date', 'available') 
+
+	def create(self, clean_data):
+		course = Course.objects.create(name=clean_data['name'], building=clean_data['building'],
+				 time=clean_data['time'], start_date=clean_data['start_date'], end_date=clean_data['end_date'],
+				 available=clean_data['available'])
+		
+		course.save()
+		return course
