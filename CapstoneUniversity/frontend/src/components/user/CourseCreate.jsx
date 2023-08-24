@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import { useAuth } from "../../services/UserContext";
-
+import './form.css';
 
 
 const required = value => {
@@ -13,7 +13,6 @@ const required = value => {
     );
   }
 };
-
 
 export default function CourseCreate() {
 
@@ -60,51 +59,58 @@ export default function CourseCreate() {
 
   return (
     <Container fluid className="content">
-
     <Form onSubmit = {createCourse}>
-      <label for="courseName" class="placeholder"><p>Course Name</p></label>
-          <input className="input" type="text" placeholder="" name="courseName"
-            value={courseName} 
-            onChange = {onChangeCourseName}
-            validations={[required]} />
+      <div className='input'>
+        <label for="courseName" class="placeholder"><p>Course Name</p></label>
+            <input className="input" type="text" placeholder="" name="courseName"
+              value={courseName} 
+              onChange = {onChangeCourseName}
+              validations={[required]} />
+      </div>
 
-      <label for="building" class="placeholder"><p>Building</p></label>
-          <input className="input" type="text" placeholder="" name="building"
-            value={building} 
-            onChange = {onChangeBuilding}
-            validations={[required]} />
+      <div className='input'>
+        <label for="building" class="placeholder"><p>Building</p></label>
+            <input className="input" type="text" placeholder="" name="building"
+              value={building} 
+              onChange = {onChangeBuilding}
+              validations={[required]} />
+      </div>
 
-      <label for="time" class="placeholder"><p>Class Time</p></label>
-          <input className="input" type="text" placeholder="" name="time"
-            value={time} 
-            onChange = {onChangeTime}
-            validations={[required]} />
+      <div className='input'>
+        <label for="time" class="placeholder"><p>Class Time</p></label>
+            <input className="input" type="text" placeholder="" name="time"
+              value={time} 
+              onChange = {onChangeTime}
+              validations={[required]} />
+      </div>
 
-
+      <div className='input'>
       <label for="startDate" class="placeholder"><p>Start Date</p></label>
           <input className="input" type="text" placeholder="" name="startDate"
             value={start_date} 
             onChange = {onChangeStartDate}
             validations={[required]} />
+      </div>
 
 
+      <div className='input'>
       <label for="endDate" class="placeholder"><p>End Date</p></label>
           <input className="input" type="text" placeholder="" name="endDate"
             value={end_date} 
             onChange = {onChangeEndDate}
             validations={[required]} />
+      </div>
 
+      <div className='input'>
       <label for="available" class="placeholder"><p>Available Seats</p></label>
           <input className="input" type="text" placeholder="" name="available"
             value={available} 
             onChange = {onChangeAvailable}
             validations={[required]} />
-        
+      </div>
+
         <button type="text" className="submit">Create Course</button>
-        </Form>
-        <div className='course_table'><h1>Course Display</h1></div>
-        
-        
+      </Form>  
     </Container>      
   );
 }

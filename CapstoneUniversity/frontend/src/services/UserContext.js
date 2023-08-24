@@ -2,7 +2,6 @@ import React, {createContext, useState, useContext, useEffect} from 'react'
 import axiosInstance from './axiosApi';
 import Cookies from 'js-cookie';
 import CSRFToken from "./CSRFToken";
-import { Navigate } from 'react-router-dom';
 
 export const UserContext = createContext();
 
@@ -22,6 +21,7 @@ const UserProvider = ({ children }) => {
 const useProvideAuth = () => {
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -42,6 +42,7 @@ const useProvideAuth = () => {
 
       return await axiosInstance.get("userinfo/", config).then((response) => {
         setUser(response.data);
+        setLoading(false);
       });
     }
     
@@ -105,6 +106,7 @@ const useProvideAuth = () => {
     
     return {
         user,
+        loading,
         error,
         getUserData,
         register,
