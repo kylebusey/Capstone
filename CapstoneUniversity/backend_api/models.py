@@ -25,7 +25,7 @@ class Course(models.Model):
     name = models.CharField(max_length=50, default='Course Name')
     professor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='instructor', null=True)
     building = models.CharField(max_length=50)
-    time = models.CharField(max_length=10)
+    time = models.CharField(max_length=30)
     start_date = models.DateField()
     end_date = models.DateField()
     students = models.ManyToManyField(User, blank=True, related_name='registered')

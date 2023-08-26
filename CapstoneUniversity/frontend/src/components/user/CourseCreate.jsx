@@ -52,15 +52,17 @@ export default function CourseCreate() {
 
   const createCourse = (e) => {
       e.preventDefault()
-
       auth.createCourse(courseName, building, time, start_date, end_date, available);
-
   }
 
   return (
     <Container fluid className="content">
     <Form onSubmit = {createCourse}>
-      <div className='input'>
+
+    <div className="title"><h1>Create Course</h1></div>
+    <div className="sub_title"><h2>Test</h2></div>
+
+      <div className='input-container'>
         <label for="courseName" class="placeholder"><p>Course Name</p></label>
             <input className="input" type="text" placeholder="" name="courseName"
               value={courseName} 
@@ -68,7 +70,7 @@ export default function CourseCreate() {
               validations={[required]} />
       </div>
 
-      <div className='input'>
+      <div className='input-container'>
         <label for="building" class="placeholder"><p>Building</p></label>
             <input className="input" type="text" placeholder="" name="building"
               value={building} 
@@ -76,7 +78,7 @@ export default function CourseCreate() {
               validations={[required]} />
       </div>
 
-      <div className='input'>
+      <div className='input-container'>
         <label for="time" class="placeholder"><p>Class Time</p></label>
             <input className="input" type="text" placeholder="" name="time"
               value={time} 
@@ -84,7 +86,7 @@ export default function CourseCreate() {
               validations={[required]} />
       </div>
 
-      <div className='input'>
+      <div className='input-container'>
       <label for="startDate" class="placeholder"><p>Start Date</p></label>
           <input className="input" type="text" placeholder="" name="startDate"
             value={start_date} 
@@ -93,7 +95,7 @@ export default function CourseCreate() {
       </div>
 
 
-      <div className='input'>
+      <div className='input-container'>
       <label for="endDate" class="placeholder"><p>End Date</p></label>
           <input className="input" type="text" placeholder="" name="endDate"
             value={end_date} 
@@ -101,7 +103,7 @@ export default function CourseCreate() {
             validations={[required]} />
       </div>
 
-      <div className='input'>
+      <div className='input-container'>
       <label for="available" class="placeholder"><p>Available Seats</p></label>
           <input className="input" type="text" placeholder="" name="available"
             value={available} 
