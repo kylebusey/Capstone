@@ -1,0 +1,27 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    min-width: 50vw;
+}
+
+.catalog_title {
+    font-size: 50px;
+    margin: 25px 0px 25px;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    font-variant: small-caps;
+}
+
+.courses_table {
+    min-height: 500px;
+    min-width: 50vw;
+}
+
+.super-app-theme--header {
+    font-size: 14px;
+    font-variant: small-caps;
+}
+
+.button_section {
+    margin: 25px 0px 25px;
+}

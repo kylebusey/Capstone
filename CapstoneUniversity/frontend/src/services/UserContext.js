@@ -43,6 +43,9 @@ const useProvideAuth = () => {
       return await axiosInstance.get("userinfo/", config).then((response) => {
         setUser(response.data);
         setLoading(false);
+      }).catch((err) => {
+        console.log(err);
+        setLoading(false);
       });
     }
     
@@ -103,6 +106,13 @@ const useProvideAuth = () => {
 
         return await axiosInstance.post("courses/create", body);
       }
+
+      const addCourse = async (courseID) => {
+
+        <CSRFToken/>
+
+        return await axiosInstance.post("courses/register", courseID);
+      }
     
     return {
         user,
@@ -114,6 +124,7 @@ const useProvideAuth = () => {
         login,
         logout,
         createCourse,
+        addCourse
     }
 }
 

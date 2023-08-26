@@ -9,7 +9,7 @@ export const ProtectedRoute = () => {
 
    if(auth.loading) {
     return <h2>Loading...</h2>;
-  }
+  } 
 
   return (
       auth?.user ? <Outlet/> : <Navigate to='/login'/>
