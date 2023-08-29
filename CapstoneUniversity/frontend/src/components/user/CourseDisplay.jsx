@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { useAuth } from "../../services/UserContext";
-import { DataGrid, GridRowModes, useGridApiContext } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import "./CourseDisplay.css";
 import { Link } from "react-router-dom";
 
@@ -10,9 +10,7 @@ import { Link } from "react-router-dom";
 export default function CourseDisplay() {
 
   const auth = useAuth();
-  const apiRef = useGridApiContext();
-
-  const [selectedCourses, setSelectedCourses] = useState();
+  const [selectedCourses, setSelectedCourses] = useState([]);
 
   const rows = [
     { id: 1, courseId: '1', courseName: 'Accounting 101', building: 'ACA252', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
@@ -34,10 +32,13 @@ export default function CourseDisplay() {
     { field: 'availableSeats', headerName: 'Seats Left', minWidth: 75, headerClassName: 'super-app-theme--header', flex: 0.2},
   ];
 
-  const handleCourseRegistration = (e) => {
-  
-  };
 
+  const handleCourseRegister = () => {
+    console.log(selectedCourses);
+
+    alert("You have successfully registered for "+ selectedCourses.length + " courses.");
+
+  }
 
   return (
     <Container fluid className="content">
@@ -53,7 +54,7 @@ export default function CourseDisplay() {
   }}
     pageSizeOptions={[10, 20]}
     checkboxSelection
-    onRowSelectionModelChange= {}
+    onRowSelectionModelChange= {(ids) => { setSelectedCourses(ids); }}
     />
 
     </div>
@@ -61,7 +62,7 @@ export default function CourseDisplay() {
     <div className='button_section'>
      {auth.user.is_staff ? <Link style={{textDecoration: 'none'}} to="/courses/create">
     <Button variant='primary' className='create_course_button'>Create Course</Button> </Link> : 
-     <Button variant='primary' className='register_button'>Add Course</Button> }
+     <Button variant='primary' className='register_button' onClick={handleCourseRegister}>Register</Button> }
     </div>
         
         
