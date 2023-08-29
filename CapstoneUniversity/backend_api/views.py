@@ -47,7 +47,7 @@ class LoginView(APIView):
             user = serializer.check_user(data)
             if user is not None:
                 login(request, user)
-                return Response(serializer.data, status=status.HTTP_200_OK) 
+                return Response({'Success': 'Logged in'}, status=status.HTTP_200_OK) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_protect, name='dispatch')  

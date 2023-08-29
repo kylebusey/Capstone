@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { useAuth } from "../../services/UserContext";
 import { DataGrid } from '@mui/x-data-grid';
@@ -10,18 +10,19 @@ import { Link } from "react-router-dom";
 export default function CourseDisplay() {
 
   const auth = useAuth();
+  const [loading, setLoading] = useState(true);
   const [selectedCourses, setSelectedCourses] = useState([]);
+  const [courseData, setCourseData] = useState();
 
-  const rows = [
-    { id: 1, courseId: '1', courseName: 'Accounting 101', building: 'ACA252', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
-    { id: 2, courseId: '2', courseName: 'Chemistry 121', building: 'CHEM100', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
-    { id: 3, courseId: '3', courseName: 'Biology 250', building: 'BIO522', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
-    { id: 4, courseId: '3', courseName: 'Biology 250', building: 'BIO522', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
-    { id: 5, courseId: '3', courseName: 'Biology 250', building: 'BIO522', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
-    { id: 6, courseId: '3', courseName: 'Biology 250', building: 'BIO522', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
-    { id: 7, courseId: '3', courseName: 'Biology 250', building: 'BIO522', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
-    { id: 8, courseId: '3', courseName: 'Biology 250', building: 'BIO522', startDate: '2023-09-05', endDate: '2023-12-11', availableSeats: '30'},
-  ];
+
+  useEffect(() => {
+    auth.displayCourses().then((response) => {
+      setCourseData(response.data);
+      setLoading(false);
+     });
+  }, [])
+
+  
 
   const columns = [
     { field: 'courseId', headerName: 'Course ID', minWidth: 75, headerClassName: 'super-app-theme--header', flex: 0.2},
@@ -33,12 +34,28 @@ export default function CourseDisplay() {
   ];
 
 
+
   const handleCourseRegister = () => {
-    console.log(selectedCourses);
-
-    alert("You have successfully registered for "+ selectedCourses.length + " courses.");
-
+    if(selectedCourses.length < 3 && selectedCourses.length >= 1) {
+      alert("You can have successfully registered.");
+      auth.addCourse(selectedCourses);
+    } else {
+      alert("You can only register for two courses at a time. Please try again.");
+    }
   }
+
+  const loadCourseData = (data) => {
+   return data.map((course, index) => ({
+      id: index + 1,
+      courseId: index + 1,
+      courseName: course.name,
+      building: course.building,
+      startDate: course.start_date,
+      endDate: course.end_date,
+      availableSeats: course.available   
+    }))};
+    
+  
 
   return (
     <Container fluid className="content">
@@ -46,8 +63,9 @@ export default function CourseDisplay() {
     <div className='catalog_title'><p>Course Catalog</p></div>
 
     <div className='courses_table'>
-     
-      <DataGrid sx={{border: 1, boxShadow: 1, borderColor: 'black'}} rows={rows} columns={columns} initialState={{
+
+    {loading ? <h2>Loading...</h2> : 
+      <DataGrid sx={{border: 1, boxShadow: 1, borderColor: 'black'}} rows={loadCourseData(courseData)} columns={columns} initialState={{
     pagination: {
       paginationModel: { page: 0, pageSize: 10 },
     },
@@ -55,9 +73,10 @@ export default function CourseDisplay() {
     pageSizeOptions={[10, 20]}
     checkboxSelection
     onRowSelectionModelChange= {(ids) => { setSelectedCourses(ids); }}
-    />
+    /> }
 
     </div>
+  
 
     <div className='button_section'>
      {auth.user.is_staff ? <Link style={{textDecoration: 'none'}} to="/courses/create">

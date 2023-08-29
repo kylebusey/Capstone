@@ -97,6 +97,10 @@ const useProvideAuth = () => {
             setUser(null));
       }
 
+      const displayCourses = async () => {
+        return await axiosInstance.get("courses/display");
+      }
+
 
       const createCourse = async (name, building, time, start_date, end_date, available) => {
 
@@ -123,6 +127,7 @@ const useProvideAuth = () => {
         facultyRegister,
         login,
         logout,
+        displayCourses,
         createCourse,
         addCourse
     }
