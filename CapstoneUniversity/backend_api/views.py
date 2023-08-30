@@ -109,9 +109,21 @@ class CourseRegister(APIView):
                 return Response({'error': 'Already registered for course'}, status=status.HTTP_400_BAD_REQUEST)
             else:
                 course.students.add(user)
-        return Response({'success': 'student registered'})
+        return Response({'success': 'Student registered'}, status=status.HTTP_202_ACCEPTED)
                 
- 
+@method_decorator(csrf_protect, name='dispatch') 
+class CourseDrop(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, format=None):
+        user = request.user
+
+        for i in request.data:
+            course = Course.objects.get(pk=i)
+            if Course.objects.filter(id=course.id, students=user.id):
+                course.students.remove(user)
+                return Response({'success': 'You have dropped the courses you requested'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Student could not be dropped from the course'}) 
 
 @method_decorator(csrf_protect, name='dispatch') 
 class CreateCourse(APIView):

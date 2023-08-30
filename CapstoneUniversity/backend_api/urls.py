@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserCreateView, FacultyCreateView, GetCSRFToken, LoginView, LogoutView, DisplayUserAccounts, DisplayUserInformation, DisplayCourses, CourseRegister, CreateCourse
+from .views import UserCreateView, FacultyCreateView, GetCSRFToken, LoginView, LogoutView, DisplayUserAccounts, DisplayUserInformation, DisplayCourses, CourseRegister, CreateCourse, CourseDrop
 
 urlpatterns = [
     path('register/', UserCreateView.as_view(), name="create_user"),
@@ -11,5 +11,7 @@ urlpatterns = [
     path('userinfo/', DisplayUserInformation.as_view(), name="get_user_info"),
     path('courses/display', DisplayCourses.as_view(), name='display_courses'),
     path('courses/register', CourseRegister.as_view(), name='student_course_register'),
-    path('courses/create', CreateCourse.as_view(), name='faculty_course_create')
+    path('courses/drop', CourseDrop.as_view(), name='student_course_drop'),
+    path('courses/create', CreateCourse.as_view(), name='faculty_course_create'),
+
 ]
