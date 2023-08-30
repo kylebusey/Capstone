@@ -28,7 +28,7 @@ class Course(models.Model):
     time = models.CharField(max_length=30)
     start_date = models.DateField()
     end_date = models.DateField()
-    students = models.ManyToManyField(User, blank=True, related_name='registered')
+    students = models.ManyToManyField(User, related_name='registered', blank=True)
     available = models.IntegerField(default=30)
 
 

@@ -37,10 +37,10 @@ export default function CourseDisplay() {
 
   const handleCourseRegister = () => {
     if(selectedCourses.length < 3 && selectedCourses.length >= 1) {
-      alert("You can have successfully registered.");
       auth.addCourse(selectedCourses);
     } else {
       alert("You can only register for two courses at a time. Please try again.");
+      console.log(selectedCourses);
     }
   }
 

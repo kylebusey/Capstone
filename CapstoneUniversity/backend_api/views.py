@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth import login, logout
 from .models import User, Course
-from .serializers import UserSerializer, UserLoginSerializer, UserRegisterSerializer, FacultyRegisterSerializer, CourseSerializer, CreateCourseSerializer
+from .serializers import UserSerializer, UserLoginSerializer, CourseSerializer
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
 
@@ -12,7 +12,7 @@ class UserCreateView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None): 
-        serializer = UserRegisterSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)
 
         if serializer.is_valid():
             user = serializer.create(request.data)
@@ -25,10 +25,10 @@ class FacultyCreateView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None): 
-        serializer = FacultyRegisterSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)
 
         if serializer.is_valid():
-            user = serializer.create(request.data)
+            user = serializer.create_faculty(request.data)
             if user:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -99,7 +99,19 @@ class DisplayCourses(APIView):
 @method_decorator(csrf_protect, name='dispatch') 
 class CourseRegister(APIView):
     permission_classes = (permissions.IsAuthenticated,)
-    pass
+
+    def post(self, request, format=None):
+        user = request.user
+
+        for i in request.data:
+            course = Course.objects.get(pk=i)
+            if Course.objects.filter(id=course.id, students=user.id):
+                return Response({'error': 'Already registered for course'}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                course.students.add(user)
+        return Response({'success': 'student registered'})
+                
+ 
 
 @method_decorator(csrf_protect, name='dispatch') 
 class CreateCourse(APIView):
@@ -111,7 +123,7 @@ class CreateCourse(APIView):
 
         if currentUser.is_staff:
             data = request.data
-            serializer = CreateCourseSerializer(data=data)
+            serializer = CourseSerializer(data=data)
 
             if serializer.is_valid():
                 course = serializer.create(data)
