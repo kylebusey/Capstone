@@ -120,6 +120,12 @@ const useProvideAuth = () => {
 
         return await axiosInstance.post("courses/register", courseID);
       }
+
+      const dropCourse = async (courseID) => {
+        <CSRFToken/>
+
+        return await axiosInstance.post("courses/drop", courseID);
+      }
     
     return {
         user,
@@ -133,7 +139,8 @@ const useProvideAuth = () => {
         displayCourses,
         displayRegisteredCourses,
         createCourse,
-        addCourse
+        addCourse,
+        dropCourse
     }
 }
 

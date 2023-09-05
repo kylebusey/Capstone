@@ -8,7 +8,7 @@ export function LoginComponent() {
 
     return (
         <div className='conditional_item'>
-            {auth.user && auth.user.username ? [<UserGreetings username={auth.user.username}/>, <LogoutButton logout={auth.logout} />] : [<LoginButton/>, <RegisterButton/>]}
+            {auth.user && auth.user.username ? [<UserGreetings username={auth.user.username}/>, <ProfileButton/>, <LogoutButton logout={auth.logout} />] : [<LoginButton/>, <RegisterButton/>]}
         </div>
     );
 }
@@ -19,6 +19,10 @@ export function LoginButton() {
 
  export function RegisterButton() {
     return (<Link style={{textDecoration: 'none'}} to="/register"><p>Get Started</p></Link>);
+ }
+
+ export function ProfileButton() {
+    return (<Link style={{textDecoration: 'none'}} to="/dashboard"><p>Profile</p></Link>);
  }
 
 

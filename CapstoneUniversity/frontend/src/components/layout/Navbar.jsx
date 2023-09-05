@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../assets/CapLogo.png';
 import { Link } from 'react-router-dom';
 import "./navbar.css";
-import {LoginButton, LogoutButton, RegisterButton} from "./Buttons";
+import {LoginButton, LogoutButton, ProfileButton, RegisterButton} from "./Buttons";
 import { useAuth } from '../../services/UserContext';
 
 export default function Navbar() {
@@ -27,7 +27,9 @@ return (
         <div className="right_side_menu">
             <div className="navbar_links_right">
             {auth.user && auth.user.username ? 
-            [<div className='header_text'> <p>Welcome {auth.user.username}!</p> </div>, <LogoutButton logout={auth.logout}/>] :
+            [<div className='header_text'> <p>Welcome {auth.user.username}!</p> </div>,
+            <div className='profile_link'><ProfileButton/></div>,
+            <div className="logout_button"> <LogoutButton logout={auth.logout}/> </div>] :
              [<div className='item'> <LoginButton/> </div>,  <div className='item'> <RegisterButton/> </div>]}
              </div>
         </div>

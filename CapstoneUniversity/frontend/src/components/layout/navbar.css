@@ -75,6 +75,22 @@ html {
     text-decoration: solid;
 }
 
+.profile_link {
+    align-self: center;
+    justify-self: center;
+    margin: 10px 10px 10px 10px;
+}
+
+.profile_link:hover {
+    text-decoration: underline;
+}
+
+.logout_button {
+    align-self: center;
+    justify-self: center;
+    margin: 10px 10px 10px 10px;
+}
+
 .item {
     width: 128px;
     color: rgb(0, 0, 0);

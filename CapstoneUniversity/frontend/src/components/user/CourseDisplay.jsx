@@ -13,7 +13,6 @@ export default function CourseDisplay() {
   const [loading, setLoading] = useState(true);
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [courseData, setCourseData] = useState();
-  const [registeredCourses, setRegisteredCourses] = useState([]);
 
 
   useEffect(() => {
@@ -21,13 +20,7 @@ export default function CourseDisplay() {
         setCourseData(response.data);
         setLoading(false);
     });
-
-      auth.displayRegisteredCourses().then((res) => {
-        setRegisteredCourses(res.data);
-      });
     }, [])
-
-  
 
   const columns = [
     { field: 'courseId', headerName: 'Course ID', minWidth: 75, headerClassName: 'super-app-theme--header', flex: 0.2},
@@ -50,9 +43,9 @@ export default function CourseDisplay() {
   }
 
   const loadCourseData = (data) => {
-   return data.map((course, index) => ({
-      id: index + 1,
-      courseId: index + 1,
+   return data.map((course) => ({
+      id: course.id,
+      courseId: course.id,
       courseName: course.name,
       building: course.building,
       startDate: course.start_date,
@@ -79,11 +72,6 @@ export default function CourseDisplay() {
     /> }
 
     </div>
-
-    <div className='registered_courses'>
-     <p>{registeredCourses.map((course) => {return (course.name)})}</p>
-
-    </div>  
 
     <div className='button_section'>
      {auth.user.is_staff ? <Link style={{textDecoration: 'none'}} to="/courses/create">

@@ -1,0 +1,28 @@
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+}
+
+.course_schedule {
+    width: 50%;
+}
+
+.feed {
+    width: 25%;
+    margin: 10px;
+}
+
+.info {
+    width: 25%;
+}
