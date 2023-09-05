@@ -19,10 +19,10 @@ class UserLoginSerializer(serializers.Serializer):
 class CourseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Course
-		fields = ['name', 'professor', 'building', 'start_date', 'end_date', 'time', 'available', 'students']
+		fields = ['id', 'name', 'professor', 'building', 'start_date', 'end_date', 'time', 'available', 'students']
 
 		def create(self, clean_data):
-			course = Course.objects.create(name=clean_data['name'], building=clean_data['building'],
+			course = Course.objects.create(id=clean_data['id'], name=clean_data['name'], building=clean_data['building'],
 				 time=clean_data['time'], start_date=clean_data['start_date'], end_date=clean_data['end_date'],
 				 available=clean_data['available'])
 		

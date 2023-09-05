@@ -134,8 +134,12 @@ class CourseDrop(APIView):
             course = Course.objects.get(pk=i)
             if Course.objects.filter(id=course.id, students=user.id):
                 course.students.remove(user)
-                return Response({'success': 'You have dropped the courses you requested'}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error': 'Student could not be dropped from the course'}) 
+            else:
+                return Response({'error': 'Student could not be dropped from the course'}, status=status.HTTP_400_BAD_REQUEST) 
+
+        return Response({'success': 'You have dropped the courses you requested'}, status=status.HTTP_200_OK)
+    
+
 
 @method_decorator(csrf_protect, name='dispatch') 
 class CreateCourse(APIView):
