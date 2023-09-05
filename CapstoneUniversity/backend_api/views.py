@@ -67,7 +67,7 @@ class GetCSRFToken(APIView):
     def get(self, request, format=None):
         return Response({'success': 'cookie set'})
     
-
+@method_decorator(csrf_protect, name='dispatch')
 class DisplayUserAccounts(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
@@ -77,7 +77,7 @@ class DisplayUserAccounts(APIView):
         users = UserSerializer(users, many=True)
         return Response(users.data)
     
-
+@method_decorator(csrf_protect, name='dispatch')
 class DisplayUserInformation(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
@@ -85,13 +85,25 @@ class DisplayUserInformation(APIView):
         user = UserSerializer(request.user)
         return Response(user.data)
     
+@method_decorator(csrf_protect, name='dispatch')    
+class DisplayRegisteredCourses(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, format=None):
+        user = self.request.user
+        courses = Course.objects.filter(students=user.id)
+        serializer = CourseSerializer(courses, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+        
+    
 
 @method_decorator(csrf_protect, name='dispatch') 
 class DisplayCourses(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request):
-        courses = Course.objects.all()
+        user = self.request.user
+        courses = Course.objects.exclude(students=user.id)
         courses = CourseSerializer(courses, many=True)
         return Response(courses.data)
     

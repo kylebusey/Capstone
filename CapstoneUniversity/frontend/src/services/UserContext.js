@@ -101,6 +101,9 @@ const useProvideAuth = () => {
         return await axiosInstance.get("courses/display");
       }
 
+      const displayRegisteredCourses = async () => {
+        return await axiosInstance.get("courseinfo/");
+      }
 
       const createCourse = async (name, building, time, start_date, end_date, available) => {
 
@@ -128,6 +131,7 @@ const useProvideAuth = () => {
         login,
         logout,
         displayCourses,
+        displayRegisteredCourses,
         createCourse,
         addCourse
     }
