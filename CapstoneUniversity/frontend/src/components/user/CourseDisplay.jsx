@@ -13,14 +13,19 @@ export default function CourseDisplay() {
   const [loading, setLoading] = useState(true);
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [courseData, setCourseData] = useState();
+  const [registeredCourses, setRegisteredCourses] = useState([]);
 
 
   useEffect(() => {
-    auth.displayCourses().then((response) => {
-      setCourseData(response.data);
-      setLoading(false);
-     });
-  }, [])
+      auth.displayCourses().then((response) => {
+        setCourseData(response.data);
+        setLoading(false);
+    });
+
+      auth.displayRegisteredCourses().then((res) => {
+        setRegisteredCourses(res.data);
+      });
+    }, [])
 
   
 
@@ -54,8 +59,6 @@ export default function CourseDisplay() {
       endDate: course.end_date,
       availableSeats: course.available   
     }))};
-    
-  
 
   return (
     <Container fluid className="content">
@@ -76,7 +79,11 @@ export default function CourseDisplay() {
     /> }
 
     </div>
-  
+
+    <div className='registered_courses'>
+     <p>{registeredCourses.map((course) => {return (course.name)})}</p>
+
+    </div>  
 
     <div className='button_section'>
      {auth.user.is_staff ? <Link style={{textDecoration: 'none'}} to="/courses/create">

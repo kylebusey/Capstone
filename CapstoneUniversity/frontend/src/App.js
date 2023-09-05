@@ -15,6 +15,7 @@ import UserProvider from './services/UserContext';
 import { FacultyRoute, ProtectedRoute } from './services/ProtectedRoute';
 import icon from './assets/favicon.ico';
 import CourseCreate from './components/user/CourseCreate';
+import UserDashboard from './components/user/Dashboard';
 
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
       <Route exact path="/faculty/register" element={<FacultyRegister />} />
       <Route element={<ProtectedRoute />}>
       <Route exact path="/courses" element={<CourseDisplay /> }/>
+      </Route>
+      <Route element={<ProtectedRoute />}>
+      <Route exact path="/dashboard" element={<UserDashboard /> }/>
       </Route>
       <Route element={<ProtectedRoute />}>
       <Route exact path="/students/feed" element={<StudentFeed /> }/>
