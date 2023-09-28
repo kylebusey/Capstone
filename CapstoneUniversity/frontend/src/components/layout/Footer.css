@@ -1,18 +1,11 @@
 .footer {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    height: 80px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.296);
+    display: flex;
+    height: 100px;
 }
 
 .footer-links {
     display: flex;
-    justify-content: center;
-    text-align: center;
-    font-family: var(--font-family);
-    font-size: 16px;
+    width: 33%;
 }
 
 .item {
@@ -21,9 +14,7 @@
 }
 
 .footer_text {
-    position: absolute;
-    top: 0%;
-    left: 75%;
+    width: 33%;
 }
 
 .footer_text p {
@@ -33,11 +24,7 @@
 }
 
 .social_media_imgs {
-    display: flex;
-    justify-content: flex-start;
-    position: absolute;
-    top: -10%;
-    margin: 0.5rem;
+    width: 33%;
 }
 
 .img {

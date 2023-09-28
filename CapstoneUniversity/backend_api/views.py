@@ -48,7 +48,7 @@ class LoginView(APIView):
             if user is not None:
                 login(request, user)
                 return Response({'Success': 'Logged in'}, status=status.HTTP_200_OK) 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
 @method_decorator(csrf_protect, name='dispatch')  
 class LogoutView(APIView):
@@ -137,7 +137,7 @@ class CourseDrop(APIView):
             else:
                 return Response({'error': 'Student could not be dropped from the course'}, status=status.HTTP_400_BAD_REQUEST) 
 
-        return Response({'success': 'You have dropped the courses you requested'}, status=status.HTTP_200_OK)
+        return Response({'success': 'You have dropped the courses you requested'}, status=status.HTTP_202_ACCEPTED)
     
 
 
@@ -157,7 +157,7 @@ class CreateCourse(APIView):
                 course = serializer.create(data)
                 course.professor_id = currentUser.id
                 course.save()
-                return Response({'success': 'course created'}, status=status.HTTP_200_OK) 
+                return Response({'success': 'course created'}, status=status.HTTP_201_CREATED) 
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({'Error': 'Must be authenticated to create courses.'}, status=status.HTTP_400_BAD_REQUEST)
 
