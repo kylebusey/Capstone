@@ -69,6 +69,7 @@ export default function UserDashboard() {
 
             <div className='feed'>
               <h2>Current News</h2>
+              <p>To view your feed, click here.</p>
             </div>  
 
             <div className='info'>

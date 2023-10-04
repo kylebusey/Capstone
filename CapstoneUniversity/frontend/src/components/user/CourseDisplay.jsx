@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useAuth } from "../../services/UserContext";
 import { DataGrid } from '@mui/x-data-grid';
 import "./CourseDisplay.css";
@@ -54,7 +54,7 @@ export default function CourseDisplay() {
     }))};
 
   return (
-    <Container fluid className="content">
+    <div className="content">
     
     <div className='catalog_title'><p>Course Catalog</p></div>
 
@@ -80,6 +80,6 @@ export default function CourseDisplay() {
     </div>
         
         
-    </Container>      
+    </div>      
   );
 }
