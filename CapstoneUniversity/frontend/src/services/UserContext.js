@@ -21,32 +21,17 @@ const UserProvider = ({ children }) => {
 const useProvideAuth = () => {
 
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState();
     const [error, setError] = useState('');
 
-    useEffect(() => {
-        getUserData();
-    }, []);
-
     const getUserData = async () => {
-            
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken'),
-                withCredentials: true,
-            }
-        };
-   
+    
+      setLoading(true);
 
-      return await axiosInstance.get("userinfo/", config).then((response) => {
-        setUser(response.data);
-        setLoading(false);
-      }).catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+      return await axiosInstance.get("userinfo/").then((response) => setUser(response.data))
+      .catch((err) => {
+            console.log("User not logged in, user info denied.");
+      }).finally(() => setLoading(false));
     }
     
     const register = async (username, first_name, last_name, password) => {
@@ -67,19 +52,6 @@ const useProvideAuth = () => {
         });
     }
     
-    const login = async (username, password) => {
-
-        const body = JSON.stringify({username, password});
-
-        return await axiosInstance.post("login/", body).then((response) => {
-            if(response.data.username) {
-                getUserData();
-            } 
-        }).catch((error) => {
-            alert(error);
-        })
-    };
-
     const logout = async () => {
 
         <CSRFToken/>
@@ -134,7 +106,6 @@ const useProvideAuth = () => {
         getUserData,
         register,
         facultyRegister,
-        login,
         logout,
         displayCourses,
         displayRegisteredCourses,

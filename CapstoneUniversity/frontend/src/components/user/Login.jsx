@@ -1,10 +1,13 @@
 import {React, useState } from "react"
-import Form from 'react-bootstrap/Form';
 import './form.css';
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useAuth } from "../../services/UserContext";
+import axiosInstance from "../../services/axiosApi";
+import Form from 'react-bootstrap/Form';
 import capstoneLogo from '../../assets/CapLogo.png';
 import CSRFToken from "../../services/CSRFToken";
-import { useAuth } from "../../services/UserContext";
+import Loading from "../layout/Loading";
+
 
 
 const required = value => {
@@ -32,28 +35,42 @@ export default function LoginForm() {
   
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
+   const [error, setError] = useState(null);
+
+
    const auth = useAuth();
    
    const navigate = useNavigate();
    const location = useLocation();
 
    const from = location.state?.from || "/home";
-    
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-      auth.login(username, password).then(() => {
-          navigate('/home')
-          window.location.reload()
-      })
+
+   const handleLoginSubmit = async (e) => {
+       e.preventDefault();
+      
+       const body = JSON.stringify({username, password});
+      
+      if(username.length > 5 && password.length > 6) {
+          await axiosInstance.post("login/", body)
+          .then(() => auth.getUserData())
+          .finally(() => {
+            navigate('/home');
+          });
+      } else {
+          setError("Error: You must enter your username and password.");
+      }
+
+                  
   };
 
-  const onChangeUsername = e => {
-    setUsername(e.target.value);
-  };
+    const onChangeUsername = e => {
+      setUsername(e.target.value);
+    };
 
-  const onChangePassword = e => {
-    setPassword(e.target.value);
-  };
+    const onChangePassword = e => {
+      setPassword(e.target.value);
+    };
+
 
     return (
       <div className="form">
@@ -77,6 +94,7 @@ export default function LoginForm() {
             validations={[required, passwordValidation]} />
           </div>
           <button type="text" className="submit">Sign In</button>
+          <div className="error_text">{error && <p>Error: Invalid Username or Password</p>}</div>
       </Form>
       </div>
     );

@@ -5,22 +5,56 @@ import { Navigate, Outlet } from "react-router-dom";
 
 
 export const ProtectedRoute = () => {
+
+  const [authorized, setAuthorized] = useState();
+
    let auth = useAuth();
 
-   if(auth.loading) {
+   useEffect(() => {
+    const authorize = async () => {
+      try {
+      await auth.getUserData();
+      setAuthorized(true);
+      } catch (err) {
+        setAuthorized(false);
+      }
+    }
+
+    authorize();
+    
+   }, [])
+
+   if(authorized === undefined) {
     return <h2>Loading...</h2>;
   } 
 
   return (
-      auth?.user ? <Outlet/> : <Navigate to='/login'/>
-    )
+      auth.user && authorized ? <Outlet/> : <Navigate to='/login'/>
+    );
   }
 
 
 export const FacultyRoute = () => {
-    let auth = useAuth();
 
-    if(auth.loading) {
+  const [authorized, setAuthorized] = useState();
+
+  let auth = useAuth();
+
+    useEffect(() => {
+      const authorize = async () => {
+        try {
+        await auth.getUserData();
+        setAuthorized(true);
+        } catch (err) {
+          setAuthorized(false);
+        }
+      }
+  
+      authorize();
+      
+     }, [])
+  
+     if(authorized === undefined) {
       return <h2>Loading...</h2>;
     }
 
