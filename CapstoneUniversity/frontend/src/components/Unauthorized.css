@@ -1,0 +1,25 @@
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.error_title {
+    min-height: 5vh;
+}
+
+.error_title h1 {
+    font-size: 28px;
+    font-style: italic;
+    margin: 10px;
+}
+
+.main_img {
+    min-height: 50vh;
+}
+
+.main_img img {
+    height: 600px;
+    width: 600px;
+    margin: 10px;
+}
+
