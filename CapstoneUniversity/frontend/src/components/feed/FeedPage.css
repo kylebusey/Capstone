@@ -1,35 +1,29 @@
 .main_container {
-    width: 100vw;
-    height: 100vh;
+    display: flex;
 }
 
-.main_title {
-    margin-bottom: 50px;
+.side_panel {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 
-.main_title h1 {
-    font-size: 48px;
+.side_panel h1 {
+    font-size: 36px;
 }
 
 .news-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.picture-one {
+    flex-direction: column;
+    max-width: 75vw;
     flex: 1;
-}
-
-.picture-two {
-    flex: 1;
-}
-
-.picture-three {
-    flex: 1;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .feedpic {
-    width: 25vw;
-    height: 25vh;
+    width: 60vw;
+    height: 30vh;
 }
