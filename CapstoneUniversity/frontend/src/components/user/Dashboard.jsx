@@ -69,17 +69,17 @@ export default function UserDashboard() {
 
             <div className='feed'>
               <h2>Current News</h2>
-              <p>To view your feed, click here.</p>
+              <p>To view your feed, click <Link style={{textDecoration: 'none'}} to="/students/feed">here!</Link></p>
             </div>  
 
             <div className='info'>
               {auth.user.is_staff ? <h2>Faculty Information</h2> : <h2>Student Information</h2>}
               <ul>
                 <li>Username: {auth.user.username}</li>
-                <li> First name: {auth.user.first_name}</li>
-                <li>Last name: {auth.user.last_name}</li>
+                <li> First Name: {auth.user.first_name}</li>
+                <li>Last Name: {auth.user.last_name}</li>
                 <li>Current Balance: $0.00</li>
-                  </ul>
+              </ul>
             </div> 
           </div>
 

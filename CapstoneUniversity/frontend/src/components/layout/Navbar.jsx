@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/CapLogo.png';
 import { Link } from 'react-router-dom';
 import "./navbar.css";
@@ -8,6 +8,24 @@ import { useAuth } from '../../services/UserContext';
 export default function Navbar() {
 
     const auth = useAuth();
+    const [authorized, setAuthorized] = useState();
+
+    useEffect(() => {
+        const authorize = async () => {
+          try {
+            await auth.getUserData();
+            setAuthorized(true);
+          } catch (err) {
+            setAuthorized(false);
+          }
+        }
+        authorize();
+       }, [])
+
+    if(authorized === undefined) {
+        return <h2>Loading...</h2>;
+    } 
+
 
 return (
     <div className="navbar">
@@ -26,7 +44,7 @@ return (
         </div>
         <div className="right_side_menu">
             <div className="navbar_links_right">
-            {auth.user && auth.user.username ? 
+            {auth.user && authorized ? 
             [<div className='header_text'> <p>Welcome {auth.user.username}!</p> </div>,
             <div className='profile_link'><ProfileButton/></div>,
             <div className="logout_button"> <LogoutButton logout={auth.logout}/> </div>] :

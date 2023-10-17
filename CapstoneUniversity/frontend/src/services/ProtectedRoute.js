@@ -60,7 +60,7 @@ export const FacultyRoute = () => {
 
     if(auth.user) {
       return (
-        auth?.user.is_staff ? <Outlet/> : <Navigate to='/unauthorized'/>
+        auth?.user.is_staff && authorized ? <Outlet/> : <Navigate to='/unauthorized'/>
       );
     } else {
       return (<Navigate to='/login'/>);
