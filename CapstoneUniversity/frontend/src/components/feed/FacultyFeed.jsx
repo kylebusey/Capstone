@@ -1,62 +1,61 @@
 import feedpic1 from '../../assets/feedpic1.jpeg';
-import feedpic2 from '../../assets/feedpic2.png';
-import feedpic3 from '../../assets/feedpic3.png';
+import theatre from '../../assets/theatre.jpeg';
+import ncaa from '../../assets/collegebasketball.webp';
 import './FeedPage.css';
 
 export default function FacultyFeedPage() {
   return (
-      <section class="SchoolNews">
-  <div class="main_container">
-    <h2 class="news-title">School News</h2>
-    <div class="row">
-      <div class="ct-blog col-sm-6 col-md-4">
-        <div class="inner">
-          <div class="crop">
-          <img alt="News Entry" src={feedpic1}/>
+    <div className='main_container'>
+
+        <div className='side_panel'>
+          <div className='top-descriptor'>
+            <h1>FACULTY FEED</h1>
+
+            <h2>Overview</h2>
+            <p>
+            Use your feed page to see current information, upcoming events, and school resources to make your school experience as smooth as possible.
+            </p>
           </div>
-          <div class="ct-blog-content">
-            <div class="ct-blog-date">
-              <span>May </span><strong>1</strong>
-            </div>
-            <h3 class="ct-blog-header">
-              5 tips manage your time while balancing school and work!
-            </h3>
+
+          <div className='other-resources'>
+              <h2>Other Resources</h2>
+                <ul>
+                  <li>View Courses Taught</li>
+                  <li>Mental Health Resources</li>
+                  <li>Library Hours</li>
+                  <li>Contact Administration</li>
+                </ul>
           </div>
+
         </div>
-      </div>
-      <div class="ct-blog col-sm-6 col-md-4">
-        <div class="inner">
-          <div class="crop">
-            <img alt="News Entry" src={feedpic2} />
+      
+        <div className='news-container'>
+
+        <div className='picture-one'>
+            <img className='feedpic' alt = "School News 1" src={feedpic1}/>
+            <div className='date-header'><h2>October 2nd</h2></div>
+            <div className='date-subheader'><h3>Library Career Session</h3></div>
+            <div className='event-description'><p>Join our career coordinator for an information session at 4:00 PM to go over tips and tricks for finding a job that works for you.
+               The Q&A session starts at 5:30 PM. You won't want to miss this!</p></div>
           </div>
-          <div class="ct-blog-content">
-            <div class="ct-blog-date">
-              <span>April </span><strong>27</strong>
+    
+            <div className='picture-two'>
+              <img className='feedpic' alt = "School News 2" src={theatre}/>
+              <div className='date-header'><h2>October 25th</h2></div>
+              <div className='date-subheader'><h3>School Theatre Night</h3></div>
+              <div className='event-description'><p>Come see our Theatre group perform a play with showtimes at 6:00 PM and 8:00 PM. Tickets start at $19.99 and can be purchased at the door.</p></div>
             </div>
-            <h3 class="ct-blog-header">
-              Star Student selected to represent Capstone University in academic competition.
-            </h3>
-          </div>
-        </div>
-      </div>
-      <div class="ct-blog col-sm-6 col-md-4">
-        <div class="inner">
-          <div class="crop">
-            <img alt="News Entry" src={feedpic3}/>
-          </div>
-          <div class="ct-blog-content">
-            <div class="ct-blog-date">
-              <span>April </span><strong>25</strong>
+
+            <div className='picture-three'>
+              <img className='feedpic' alt = "School News 3" src={ncaa}/>
+              <div className='date-header'><h2>November 4th</h2></div>
+              <div className='date-subheader'><h3>Basketball Game State Championship</h3></div>
+              <div className='event-description'><p>Our basketball team is in the state championship and will play at home at 5:30 PM. </p></div>
             </div>
-            <h3 class="ct-blog-header">
-              Event Calendar for Fall 2022 Semester
-            </h3>
-          </div>
         </div>
-      </div>
-      </div>
+
+      
     </div>
-</section>
 
   );
 }
