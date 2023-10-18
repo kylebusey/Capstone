@@ -69,7 +69,8 @@ export default function UserDashboard() {
 
             <div className='feed'>
               <h2>Current News</h2>
-              <p>To view your feed, click <Link style={{textDecoration: 'none'}} to="/students/feed">here!</Link></p>
+              <p>To view your feed, click {auth.user.is_staff ? <Link style={{textDecoration: 'none'}} to="/faculty/feed">here!</Link>:
+               <Link style={{textDecoration: 'none'}} to="/students/feed">here!</Link>}</p>
             </div>  
 
             <div className='info'>

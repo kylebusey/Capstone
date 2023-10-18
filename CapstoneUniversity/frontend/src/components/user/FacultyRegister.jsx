@@ -57,6 +57,11 @@ export default function FacultyRegister() {
   const [lastName, setLastName] = useState();
   const [password, setPassword] = useState();
 
+
+  if(auth.user) {
+    navigate('/dashboard')
+   }
+
   const onChangeUsername = e => {
     setUsername(e.target.value);
   };

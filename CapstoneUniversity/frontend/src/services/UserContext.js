@@ -22,15 +22,14 @@ const useProvideAuth = () => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState();
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
 
     const getUserData = async () => {
-    
       setLoading(true);
 
       return await axiosInstance.get("userinfo/").then((response) => setUser(response.data))
       .catch((err) => {
-            console.log("User not logged in, user info denied.");
+            setError(true);
       }).finally(() => setLoading(false));
     }
     
@@ -77,6 +76,10 @@ const useProvideAuth = () => {
         return await axiosInstance.get("courseinfo/");
       }
 
+      const displayTaughtCourses = async () => {
+        return await axiosInstance.get("coursestaught/");
+      }
+
       const createCourse = async (name, building, time, start_date, end_date, available) => {
 
         <CSRFToken/>
@@ -95,8 +98,12 @@ const useProvideAuth = () => {
 
       const dropCourse = async (courseID) => {
         <CSRFToken/>
+        await axiosInstance.post("courses/drop", courseID);
+      }
 
-        return await axiosInstance.post("courses/drop", courseID);
+      const deleteCourse = async (courseID) => {
+        <CSRFToken/>
+        await axiosInstance.post("courses/delete", courseID);
       }
     
     return {
@@ -109,9 +116,11 @@ const useProvideAuth = () => {
         logout,
         displayCourses,
         displayRegisteredCourses,
+        displayTaughtCourses,
         createCourse,
         addCourse,
-        dropCourse
+        dropCourse,
+        deleteCourse
     }
 }
 

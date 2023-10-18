@@ -42,6 +42,13 @@ export default function CourseDisplay() {
     }
   }
 
+  const handleCourseDelete = () => {
+    if(selectedCourses.length < 3 && selectedCourses.length >= 1) {
+      auth.deleteCourse(selectedCourses);
+      alert("Course deletion successful.");
+    } 
+  }
+
   const loadCourseData = (data) => {
    return data.map((course) => ({
       id: course.id,
@@ -74,8 +81,8 @@ export default function CourseDisplay() {
     </div>
 
     <div className='button_section'>
-     {auth.user.is_staff ? <Link style={{textDecoration: 'none'}} to="/courses/create">
-    <Button variant='primary' className='create_course_button'>Create Course</Button> </Link> : 
+     {auth.user.is_staff ? [<Link style={{textDecoration: 'none'}} to="/courses/create"> <Button variant='primary' className='create_course_button'>Create Course</Button> </Link>, <Link style={{textDecoration: 'none'}} to="/courses/delete">
+    <Button variant='primary' className='delete_course_button' onClick={handleCourseDelete}>Delete Course</Button> </Link>] : 
      <Button variant='primary' className='register_button' onClick={handleCourseRegister}>Register</Button> }
     </div>
         
