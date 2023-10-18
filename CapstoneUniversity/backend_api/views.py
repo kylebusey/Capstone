@@ -94,6 +94,16 @@ class DisplayRegisteredCourses(APIView):
         courses = Course.objects.filter(students=user.id)
         serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+@method_decorator(csrf_protect, name='dispatch')    
+class DisplayTaughtCourses(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, format=None):
+        user = self.request.user
+        courses = Course.objects.filter(professor_id=user.id)
+        serializer = CourseSerializer(courses, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
         
     
 
@@ -138,7 +148,26 @@ class CourseDrop(APIView):
                 return Response({'error': 'Student could not be dropped from the course'}, status=status.HTTP_400_BAD_REQUEST) 
 
         return Response({'success': 'You have dropped the courses you requested'}, status=status.HTTP_202_ACCEPTED)
-    
+
+@method_decorator(csrf_protect, name='dispatch')
+class CourseDelete(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    @staticmethod
+    def post(request, format=None):
+        currentUser = request.user
+
+        if currentUser.is_staff:
+            
+            for i in request.data:
+                course = Course.objects.get(pk=i)
+        
+                if course:
+                    course.delete()
+                else:
+                    return Response({'Error': 'Course could not be deleted'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'Success': 'Course was deleted'}, status=status.HTTP_202_ACCEPTED) 
+        return Response({'Error': 'Must be authenticated to create courses.'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @method_decorator(csrf_protect, name='dispatch') 

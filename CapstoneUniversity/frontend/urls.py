@@ -14,6 +14,6 @@ urlpatterns = [
     path('unauthorized', index),
     path('courses', index),
     path('courses/create', index),
-    path('dashboard', index)
+    path('dashboard', index),
     
 ]

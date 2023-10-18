@@ -20,17 +20,17 @@ export default function HomePage() {
 
         <div className="home_buttons">
 
-        <Link to ="/aboutus">
-          <Button className="button" variant="primary" size="lg"><span>About Us</span></Button> 
-        </Link>
+        
+        <Button className="button" variant="primary" size="lg"><span>About Us</span></Button> 
+       
 
         <Link to="/register">
           <Button className="button" variant="primary" size="lg"><span>Enroll Now</span></Button>
         </Link>
 
-        <Link to="/home">
-          <Button className="button" variant="primary" size="lg"><span>Success Stories</span></Button>
-        </Link>
+
+        <Button className="button" variant="primary" size="lg"><span>Success Stories</span></Button>
+
 
         </div>
 

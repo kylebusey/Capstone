@@ -60,7 +60,6 @@ export default function CourseCreate() {
     <Form onSubmit = {createCourse}>
 
     <div className="title"><h1>Create Course</h1></div>
-    <div className="sub_title"><h2>Test</h2></div>
 
       <div className='input-container'>
         <label for="courseName" class="placeholder"><p>Course Name</p></label>
