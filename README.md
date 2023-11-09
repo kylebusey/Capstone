@@ -1,7 +1,7 @@
 <img src="capstoneuni.png" align="right" />
+
+
 # Capstone University 
-
-
 
 
 ## About 
