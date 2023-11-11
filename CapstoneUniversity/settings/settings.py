@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-d+tk%5^r54#f5--t!&$e7*c=!gzjlxla#l4k7)nh!+r42!dmqo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['capstone-university-d2000131f462.herokuapp.com', 'localhost']
 
 AUTH_USER_MODEL = "backend_api.User"
 
