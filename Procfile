@@ -1,1 +1,1 @@
-web gunicorn CapstoneUniversity/settings.wsgi
+web gunicorn --pythonpath CapstoneUniversity settings.wsgi
