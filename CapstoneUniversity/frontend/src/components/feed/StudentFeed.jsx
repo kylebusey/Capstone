@@ -1,6 +1,7 @@
 import feedpic1 from '../../assets/feedpic1.jpeg';
 import theatre from '../../assets/theatre.jpeg';
 import ncaa from '../../assets/collegebasketball.webp';
+import { Link } from "react-router-dom";
 import './FeedPage.css';
 
 export default function FeedPage() {
@@ -20,10 +21,10 @@ export default function FeedPage() {
           <div className='other-resources'>
               <h2>Other Resources</h2>
                 <ul>
-                  <li>View Course Schedule</li>
-                  <li>Counseling Center</li>
-                  <li>Library Hours</li>
-                  <li>Contact an Advisor</li>
+                  <Link to='/dashboard'><li>View Course Schedule</li></Link>
+                  <Link to='/counseling'><li>Counseling Center</li></Link>
+                  <Link to='/library'><li>Library Hours</li></Link>
+                  <Link to='/advising'><li>Contact an Advisor</li></Link>
                 </ul>
           </div>
 
