@@ -1,1 +1,1 @@
-web gunicorn CapstoneUniversity.wsgi
+web gunicorn CapstoneUniversity/settings.wsgi
