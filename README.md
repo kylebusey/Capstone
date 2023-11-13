@@ -21,7 +21,7 @@ The website represents a fictious University and implements many features that a
  
 
 ## Usage
-The site is currently hosted on Heroku.
+The site is currently hosted on Heroku. Find it [here](https://capstone-university-d2000131f462.herokuapp.com/home). 
 
 ## Planned Updates
 - A revamped faculty feed to differentiate the page from the student page.
