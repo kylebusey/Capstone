@@ -3,12 +3,10 @@
 
 # Capstone University 
 
-
-![Banner](frontpage.jpeg)
-
-
 ## About 
 >Capstone University is a project I developed to learn multiple relevant skills such as React.js, Django, and SQL which I did not have a great understanding of. This project was originally a project I had eight weeks to build in a collaborative setting, mimicking a professonial environment. I decided afterwards to rewrite the whole project to match the vision I had for it. Developing a full-stack web app has been a very rewarding experience and has taught me how intricate web development can be, something I no longer take for granted.
+
+![Banner](frontpage.jpeg)
 
 
 ## Features
