@@ -41,6 +41,7 @@ export default function UserDashboard() {
     const dropCourses = () => {
       console.log(selectedCourses);
       auth.dropCourse(selectedCourses);
+      window.location.reload()
     }
    
 

@@ -13,9 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-d+tk%5^r54#f5--t!&$e7*c=!gzjlxla#l4k7)nh!+r42!dmqo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['capstone-university-d2000131f462.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['capstone-university-d2000131f462.herokuapp.com', '127.0.0.1', 'localhost']
 
 AUTH_USER_MODEL = "backend_api.User"
 

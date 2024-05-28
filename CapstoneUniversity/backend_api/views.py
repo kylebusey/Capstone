@@ -167,7 +167,7 @@ class CourseDelete(APIView):
                 else:
                     return Response({'Error': 'Course could not be deleted'}, status=status.HTTP_400_BAD_REQUEST)
             return Response({'Success': 'Course was deleted'}, status=status.HTTP_202_ACCEPTED) 
-        return Response({'Error': 'Must be authenticated to create courses.'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'Error': 'Must be authenticated to delete courses.'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @method_decorator(csrf_protect, name='dispatch') 

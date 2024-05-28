@@ -53,6 +53,7 @@ export default function CourseCreate() {
   const createCourse = (e) => {
       e.preventDefault()
       auth.createCourse(courseName, building, time, start_date, end_date, available);
+      window.location.reload()
   }
 
   return (

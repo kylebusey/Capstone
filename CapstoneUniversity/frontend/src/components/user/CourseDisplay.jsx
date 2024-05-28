@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useAuth } from "../../services/UserContext";
 import { DataGrid } from '@mui/x-data-grid';
 import "./CourseDisplay.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 
@@ -13,6 +13,7 @@ export default function CourseDisplay() {
   const [loading, setLoading] = useState(true);
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [courseData, setCourseData] = useState();
+
 
 
   useEffect(() => {
@@ -36,6 +37,8 @@ export default function CourseDisplay() {
   const handleCourseRegister = () => {
     if(selectedCourses.length < 3 && selectedCourses.length >= 1) {
       auth.addCourse(selectedCourses);
+      alert("Course registration successful.");
+      window.location.reload();
     } else {
       alert("You can only register for two courses at a time. Please try again.");
       console.log(selectedCourses);
@@ -46,6 +49,7 @@ export default function CourseDisplay() {
     if(selectedCourses.length < 3 && selectedCourses.length >= 1) {
       auth.deleteCourse(selectedCourses);
       alert("Course deletion successful.");
+      window.location.reload();
     } 
   }
 
@@ -81,8 +85,8 @@ export default function CourseDisplay() {
     </div>
 
     <div className='button_section'>
-     {auth.user.is_staff ? [<Link style={{textDecoration: 'none'}} to="/courses/create"> <Button variant='primary' className='create_course_button'>Create Course</Button> </Link>, <Link style={{textDecoration: 'none'}} to="/courses/delete">
-    <Button variant='primary' className='delete_course_button' onClick={handleCourseDelete}>Delete Course</Button> </Link>] : 
+     {auth.user.is_staff ? [<Link style={{textDecoration: 'none'}} to="/courses/create"> <Button variant='primary' className='create_course_button'>Create Course</Button> </Link>, 
+     <Button variant='primary' className='delete_course_button' onClick={handleCourseDelete}>Delete Course</Button>] : 
      <Button variant='primary' className='register_button' onClick={handleCourseRegister}>Register</Button> }
     </div>
         
