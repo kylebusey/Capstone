@@ -131,6 +131,8 @@ class CourseRegister(APIView):
                 return Response({'error': 'Already registered for course'}, status=status.HTTP_400_BAD_REQUEST)
             else:
                 course.students.add(user)
+                course.decrementSeats()
+        
         return Response({'success': 'Student registered'}, status=status.HTTP_202_ACCEPTED)
                 
 @method_decorator(csrf_protect, name='dispatch') 
@@ -144,6 +146,7 @@ class CourseDrop(APIView):
             course = Course.objects.get(pk=i)
             if Course.objects.filter(id=course.id, students=user.id):
                 course.students.remove(user)
+                course.incrementSeats()
             else:
                 return Response({'error': 'Student could not be dropped from the course'}, status=status.HTTP_400_BAD_REQUEST) 
 

@@ -9,7 +9,7 @@ import Register from './components/user/Register';
 import FacultyRegister from './components/user/FacultyRegister';
 import StudentFeed from './components/feed/StudentFeed';
 import FacultyFeed from './components/feed/FacultyFeed';
-import Unauthorized from './components/unauthorized';
+import Unauthorized from './components/Unauthorized';
 import CourseDisplay from './components/user/CourseDisplay';
 import UserProvider from './services/UserContext';
 import { FacultyRoute, ProtectedRoute } from './services/ProtectedRoute';

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 
 
 class User(AbstractUser):
@@ -29,7 +30,22 @@ class Course(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     students = models.ManyToManyField(User, related_name='registered', blank=True)
-    available = models.IntegerField(default=30)
+    available = models.PositiveIntegerField()
+    
+    def decrementSeats(self):
+        if self.available > 0:
+            self.available -= 1
+            self.save()
+        else:
+            raise ValidationError("No available slots for this course")
+        
+    def incrementSeats(self):
+        self.available += 1
+        self.save()
+    
+        
+    def __str__(self):
+        return self.name
 
 
 
