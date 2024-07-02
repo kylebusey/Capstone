@@ -4,7 +4,6 @@
     position: relative;
     background-position: center;
     background-size: cover;
-    filter: brightness(70%);
     z-index: -1;
     width: 100vw;
     height: 100vh;
@@ -14,13 +13,18 @@
 .hero_text {
   font-family: "Libre Franklin", sans-serif;
   color: rgb(255, 255, 255);
-  font-size: 55px;
   font-optical-sizing: auto;
-  font-weight: bold;
   text-align: center;
-  font-style: normal;
+  font-style: bold;
 }
 
+.hero_text h1 {
+  font-size: 150px;
+}
+
+.hero_text h2 {
+  font-size: 100px;
+}
 
 .home_buttons {
     display: flex;
