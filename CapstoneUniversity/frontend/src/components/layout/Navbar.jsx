@@ -28,18 +28,18 @@ export default function Navbar() {
 
 
 return (
-    <div className="navbar">
-        <div className="left_side_menu">
-            <Link to="/home"></Link>
-            <div className="navbar_logo"> 
+    <div className="navbar-main">
+
+        <div className="left-side-menu">
+            <div className="navbar-logo"> 
                 <Link to="/home">
                     <img src={logo} alt="college logo" />                     
                 </Link>
             </div>
-         <div className="navbar_links_left">
-             <div className="item"> <Link style={{textDecoration: 'none'}} to="/students/feed"><p>Current Students</p></Link></div>
-             <div className="item"> <Link style={{textDecoration: 'none'}} to="/faculty/feed"><p>Faculty</p></Link> </div>
-             <div className="item"> <Link style={{textDecoration: 'none'}} to="/courses"><p>Course Catalog</p></Link></div>
+         <div className="navbar-links-left">
+              <div className='nav-item'><Link style={{textDecoration: 'none'}} to="/students/feed"><p>Current Students</p></Link></div>
+              <div className='nav-item'><Link style={{textDecoration: 'none'}} to="/faculty/feed"><p>Faculty</p></Link></div>
+              <div className='nav-item'><Link style={{textDecoration: 'none'}} to="/courses"><p>Course Catalog</p></Link></div>
             </div> 
         </div>
         <div className="right_side_menu">
@@ -48,7 +48,7 @@ return (
             [<div className='header_text'> <p>Welcome {auth.user.username}!</p> </div>,
             <div className='profile_link'><ProfileButton/></div>,
             <div className="logout_button"> <LogoutButton logout={auth.logout}/> </div>] :
-             [<div className='item'> <LoginButton/> </div>,  <div className='item'> <RegisterButton/> </div>]}
+             [<div className='nav-item'> <LoginButton/> </div>,  <div className='nav-item'> <RegisterButton/> </div>]}
              </div>
         </div>
 
