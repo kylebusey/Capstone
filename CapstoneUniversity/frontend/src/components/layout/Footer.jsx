@@ -9,8 +9,8 @@ import Facebook from "../../assets/Facebook.png"
 export default function Footer() {
     return (
       <div className ="footer">
-
-        <div className="social_media_imgs">
+        
+        <div className="footer-social-imgs">
           <img className ="img" src = {Twitter} alt = "Twitter" />
           <img className ="img" src = {Linkedin} alt = "Linkedin" />
           <img className ="img" src = {Instagram} alt = "Instagram" />
@@ -23,11 +23,6 @@ export default function Footer() {
           <Link className="item" style={{textDecoration: 'none'}} ><p>Privacy Notice</p></Link>
           <Link className="item" style={{textDecoration: 'none'}} ><p>Terms of Use</p></Link>
         </div>
-
-        <div className="footer_text">
-          <p>100 College Parkway | Capstone, MI 20001</p>
-        </div>
-
       </div>
     );
   };

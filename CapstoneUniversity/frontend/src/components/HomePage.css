@@ -1,71 +1,29 @@
 .main-container {
-    background-image: url("../assets/college.jpeg");
-    background-repeat: no-repeat;
-    position: relative;
-    background-position: center;
-    background-size: cover;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
+  height: 100vh;
+  position: relative;
 }
 
-
-.hero_text {
+.hero-text {
   font-family: "Libre Franklin", sans-serif;
   color: rgb(255, 255, 255);
   font-optical-sizing: auto;
   text-align: center;
-  font-style: bold;
 }
 
-.hero_text h1 {
+.hero-text h1 {
   font-size: 150px;
+  border: 0px;
+  margin: 0px 0px 0px 0px;
+  padding: 0 0 0;
 }
 
-.hero_text h2 {
+.hero-text h2 {
   font-size: 100px;
+  border: 0px;
+  margin: 0px 0px 0px 0px;
+  padding: 0 0 0;
 }
 
-.home_buttons {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
 
-.button {
-    width: 200px;
-    height: 75px;
-    margin: 0.5rem;
-    font-family: var(--font-family);
-    background-color: rgb(74,153,230);
-    filter: brightness(60%);
-    font-size: 18px;
-    transition: all 0.5s;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid black;
-}
 
-.button span {
-    position: relative;
-    transition: 0.5s;
-  }
-  
-  .button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-  
-  .button:hover span {
-    padding-right: 25px;
-  }
-
-  .button:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
 
