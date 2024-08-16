@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url('./assets/fonts/NewAmsterdam-Regular.ttf') format('truetype');
+}
+  
+@font-face {
+    font-family: 'SecondFont';
+    src: local('SecondFont'), url('./assets/fonts/Matemasie-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'HeaderFont';
+    src: local('HeaderFont'), url('./assets/fonts/ChakraPetch-Medium.ttf') format('truetype');
+}

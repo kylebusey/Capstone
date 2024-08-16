@@ -12,7 +12,7 @@
 }
 
 .navbar-logo {
-    width: 20%;
+    width: 15%;
 }
 
 .navbar-logo img {
@@ -32,9 +32,8 @@
 
 .navbar-links-left p {
     color: rgb(0, 0, 0);
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 15px;
     line-height: 20px;
     outline: none;
     padding: 10px;
@@ -65,9 +64,8 @@
 
 .navbar_links_right p {
     color: rgb(0, 0, 0);
-    font-family: var(--font-family);
     font-weight: 500;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 20px;
     outline: none;
 }

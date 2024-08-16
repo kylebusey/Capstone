@@ -1,24 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.7bc78f38.css",
-    "main.js": "/static/js/main.003cbcdc.js",
+    "main.css": "/static/css/main.36677d42.css",
+    "main.js": "/static/js/main.dd2d21e1.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
-    "static/media/college.jpeg": "/static/media/college.1012680f7aca3ddec8de.jpeg",
+    "static/media/college-stock.mp4": "/static/media/college-stock.147ea2b2e91b41950438.mp4",
     "static/media/Twitter.png": "/static/media/Twitter.a1934cb1e20759604b49.png",
     "static/media/feedpic1.jpeg": "/static/media/feedpic1.ac1c5ad7a7a4d4345f29.jpeg",
+    "static/media/Matemasie-Regular.ttf": "/static/media/Matemasie-Regular.05e31647a636cfa65e22.ttf",
     "static/media/theatre.jpeg": "/static/media/theatre.bfb8d2590223de815c69.jpeg",
+    "static/media/NewAmsterdam-Regular.ttf": "/static/media/NewAmsterdam-Regular.d38b24525add933eec6a.ttf",
     "static/media/CapLogo.png": "/static/media/CapLogo.c424656fe26794336cf9.png",
     "static/media/collegebasketball.webp": "/static/media/collegebasketball.35a8524f7a966de5411f.webp",
     "static/media/surprised.webp": "/static/media/surprised.038e27de479b28bd9924.webp",
     "static/media/favicon.ico": "/static/media/favicon.e85ed675d5c62b20b196.ico",
     "static/media/Instagram.png": "/static/media/Instagram.ff9721125ed9d2cea46e.png",
     "index.html": "/index.html",
-    "main.7bc78f38.css.map": "/static/css/main.7bc78f38.css.map",
-    "main.003cbcdc.js.map": "/static/js/main.003cbcdc.js.map",
+    "main.36677d42.css.map": "/static/css/main.36677d42.css.map",
+    "main.dd2d21e1.js.map": "/static/js/main.dd2d21e1.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7bc78f38.css",
-    "static/js/main.003cbcdc.js"
+    "static/css/main.36677d42.css",
+    "static/js/main.dd2d21e1.js"
   ]
 }

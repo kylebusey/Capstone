@@ -1,8 +1,7 @@
 /* BackgroundVideo.css */
-.video-contain {
+.video-container {
     height: 100%;
     width: 100%;
-    height: 75vh; /* or any specific height */
     overflow: hidden;
   }
   
