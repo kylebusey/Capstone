@@ -1,6 +1,5 @@
 .header {
     display: flex;
-    flex-direction: row;
 }
 
 .header_content {
@@ -8,7 +7,6 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
     margin-right: 5px;
 }
 
@@ -28,6 +26,5 @@
     font-size: 20px;
     line-height: 28px;
     color: var(--color-text);
-
     margin-top: 1.5rem;
 }

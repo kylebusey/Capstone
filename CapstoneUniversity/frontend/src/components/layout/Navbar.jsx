@@ -40,7 +40,6 @@ return (
               <div className='nav-item'><Link style={{textDecoration: 'none'}} to="/students/feed"><p>Student Resources</p></Link></div>
               <div className='nav-item'><Link style={{textDecoration: 'none'}} to="/courses"><p>Course Catalog</p></Link></div>
               <div className='nav-item'><Link style={{textDecoration: 'none'}} to="/faculty/feed"><p>Faculty</p></Link></div>
-              <div className='nav-item'><Link style={{textDecoration: 'none'}} to="/courses"><p>About Us</p></Link></div>
             </div> 
         </div>
         <div className="right_side_menu">

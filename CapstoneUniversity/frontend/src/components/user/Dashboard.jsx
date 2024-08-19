@@ -4,6 +4,7 @@ import CSRFToken from "../../services/CSRFToken";
 import { useAuth } from "../../services/UserContext";
 import { DataGrid } from '@mui/x-data-grid';
 import { Link } from "react-router-dom";
+import college from "../../assets/college.jpeg";
 
 
 export default function UserDashboard() {
@@ -20,8 +21,6 @@ export default function UserDashboard() {
     { field: 'startDate', headerName: 'Start Date', minWidth: 75, headerClassName: 'super-app-theme--header', flex: 1},
   ];
 
-
- 
    useEffect(() => {
     auth.displayRegisteredCourses().then((res) => {
       setRegisteredCourses(res.data);
@@ -44,17 +43,22 @@ export default function UserDashboard() {
       window.location.reload()
     }
    
-
     return (
-    <div className ="content">
+    <div className ="main-content">
         <CSRFToken />
-          <div class="header">
-            <div className="title">
-              <h1>User Dashboard</h1>
-               </div>
+          <div class="top-section">
+              <h1>Dashboard</h1>
           </div>
-            <div className="body">
-              <div className="course_schedule">
+
+            <div className="body-section">
+
+            <div className='news-section'>
+              <h2>Current News</h2>
+              <p>To view your feed, click {auth.user.is_staff ? <Link style={{textDecoration: 'none'}} to="/faculty/feed">here!</Link>:
+               <Link style={{textDecoration: 'none'}} to="/students/feed">here!</Link>}</p>
+            </div>  
+
+            <div className="course-schedule">
               <div className="table_header"><h2>Course Schedule</h2></div> 
                 <div className="table">
                   { registeredCourses.length > 0 ? <DataGrid sx={{border: 1, boxShadow: 1, borderColor: 'black'}} rows={loadCourseData(registeredCourses)} columns={columns} initialState={{
@@ -65,16 +69,9 @@ export default function UserDashboard() {
                 </div>
                 {registeredCourses.length > 0 ? <button className="drop_button" onClick={dropCourses}>Drop Course</button> 
                 : <p>Register <Link style={{textDecoration: 'none'}} to="/courses">here!</Link></p> }
-
               </div>
 
-            <div className='feed'>
-              <h2>Current News</h2>
-              <p>To view your feed, click {auth.user.is_staff ? <Link style={{textDecoration: 'none'}} to="/faculty/feed">here!</Link>:
-               <Link style={{textDecoration: 'none'}} to="/students/feed">here!</Link>}</p>
-            </div>  
-
-            <div className='info'>
+            <div className='user-info'>
               {auth.user.is_staff ? <h2>Faculty Information</h2> : <h2>Student Information</h2>}
               <ul>
                 <li>Username: {auth.user.username}</li>

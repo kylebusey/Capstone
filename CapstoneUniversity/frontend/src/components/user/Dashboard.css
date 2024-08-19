@@ -1,32 +1,48 @@
-.content {
+.main-content {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.top-section {
+    background-image: url("../../assets/college.jpeg");
+    background-position: center; /* Aligns the image to the left and vertically centers it */
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 15vw;
+    text-align: center;
 }
 
-.body {
+.top-section h1 {
+    font-size: 60px;
+    color: rgb(0, 0, 0);
+    align-self: center;
+}
+
+.body-section {
     display: flex;
     justify-content: center;
+    text-align: center;
     margin: 10px 10px 10px 10px;
 }
 
-.course_schedule {
-    width: 40%;
+.course-schedule {
+    width: 50%;
+    height: 50vh;
 }
 
 .table {
-    margin: 5px 0px 10px;
+    margin: 10px 50px 10px 50px;
 }
 
-.feed {
-    width: 30%;
+.news-section {
+    width: 25%;
+    border-right: 2px solid;
+    height: 50vh;
 }
 
-.info {
-    width: 30%;
+.user-info {
+    width: 25%;
+    border-left: 2px solid;
+    height: 50vh;
 }
