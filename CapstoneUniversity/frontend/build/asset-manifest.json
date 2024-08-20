@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.a816e516.css",
-    "main.js": "/static/js/main.293bd565.js",
+    "main.css": "/static/css/main.8b0dc6b4.css",
+    "main.js": "/static/js/main.30c3815d.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
     "static/media/college-stock.mp4": "/static/media/college-stock.147ea2b2e91b41950438.mp4",
     "static/media/college.jpeg": "/static/media/college.1012680f7aca3ddec8de.jpeg",
     "static/media/pic6.jpg": "/static/media/pic6.e0df025eb81d97e874f9.jpg",
+    "static/media/banner.jpeg": "/static/media/banner.983ed97ff5f6652f5f7d.jpeg",
     "static/media/pic3.jpg": "/static/media/pic3.a2a01f7302e467a8a8d7.jpg",
     "static/media/Twitter.png": "/static/media/Twitter.a1934cb1e20759604b49.png",
     "static/media/feedpic1.jpeg": "/static/media/feedpic1.ac1c5ad7a7a4d4345f29.jpeg",
@@ -23,12 +24,12 @@
     "static/media/favicon.ico": "/static/media/favicon.e85ed675d5c62b20b196.ico",
     "static/media/Instagram.png": "/static/media/Instagram.ff9721125ed9d2cea46e.png",
     "index.html": "/index.html",
-    "main.a816e516.css.map": "/static/css/main.a816e516.css.map",
-    "main.293bd565.js.map": "/static/js/main.293bd565.js.map",
+    "main.8b0dc6b4.css.map": "/static/css/main.8b0dc6b4.css.map",
+    "main.30c3815d.js.map": "/static/js/main.30c3815d.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a816e516.css",
-    "static/js/main.293bd565.js"
+    "static/css/main.8b0dc6b4.css",
+    "static/js/main.30c3815d.js"
   ]
 }

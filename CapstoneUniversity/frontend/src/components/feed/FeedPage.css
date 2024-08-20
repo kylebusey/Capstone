@@ -1,5 +1,28 @@
 .main_container {
     display: flex;
+    flex-direction: column;
+}
+
+.title {
+    display: flex;
+    height: 25vh;
+    background-image: url("../../assets/banner.jpeg");
+    background-position: center; /* Aligns the image to the left and vertically centers it */
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+}
+
+.title h1 {
+    font-size: 60px;
+    font-family: 'HeaderFont', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.flex-container {
+    display: flex;
+    margin-top: 10px;
 }
 
 .side_panel {
